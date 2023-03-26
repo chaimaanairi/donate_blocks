@@ -5,3 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+h1{
+  font-weight: normal;
+  font-size: 40px;
+  margin-left: 11px;
+  font-family: 'Praise';
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+

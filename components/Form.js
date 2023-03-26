@@ -95,6 +95,7 @@ return (
             :
                 <FormInputsWrapper>
                     <FormLeftWrapper />
+                    
                     <FormRightWrapper />
                 </FormInputsWrapper>               
         }

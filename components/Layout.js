@@ -1,4 +1,4 @@
-import Header from "./header";
+import Navbar from "./navbar";
 import Footer from "./footer"
 import themes from "./themes";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
         <ToastContainer />
         <LayoutWrapper>
           <GlobalStyle />
-          <Header />
+          <Navbar />
           {children}
           <Footer />
         </LayoutWrapper>
