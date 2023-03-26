@@ -8,6 +8,9 @@ const HeaderNav = () => {
   return (
     <HeaderNavWrapper>
       <Link passHref href={'/'}><HeaderNavLinks active={Router.pathname == "/" ? true : false} >
+        Home
+      </HeaderNavLinks></Link>
+      <Link passHref href={'/allDonationEvent'}><HeaderNavLinks active={Router.pathname == "/allDonationEvent" ? true : false} >
         DonationEvents
       </HeaderNavLinks></Link>
       <Link passHref href={'/createDonationEvent'}><HeaderNavLinks active={Router.pathname == "/createDonationEvent" ? true : false} >
