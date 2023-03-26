@@ -6,13 +6,13 @@ import PaidIcon from '@mui/icons-material/Paid';
 import EventIcon from '@mui/icons-material/Event';
 import Image from 'next/image';
 import { ethers } from 'ethers';
-import CampaignFactory from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
+import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 
 export default function Dashboard() {
-  const [campaignsData, setCampaignsData] = useState([]);
+  const [donationEventsData, setDonationEventsData] = useState([]);
 
   useEffect(() => {
     const Request = async () => {
@@ -27,23 +27,23 @@ export default function Dashboard() {
   
       const contract = new ethers.Contract(
         process.env.NEXT_PUBLIC_ADDRESS,
-        CampaignFactory.abi,
+        DonationTracking.abi,
         provider
       );
   
-      const getAllCampaigns = contract.filters.campaignCreated(null, null, Address);
-      const AllCampaigns = await contract.queryFilter(getAllCampaigns);
-      const AllData = AllCampaigns.map((e) => {
+      const getAllDonationEvents = contract.filters.donationEventCreated(null, null, Address);
+      const AllDonationEvents = await contract.queryFilter(getAllDonationEvents);
+      const AllData = AllDonationEvents.map((e) => {
       return {
         title: e.args.title,
         image: e.args.imgURI,
         owner: e.args.owner,
         timeStamp: parseInt(e.args.timestamp),
         amount: ethers.utils.formatEther(e.args.requiredAmount),
-        address: e.args.campaignAddress
+        address: e.args.donationEventAddress
       }
       })  
-      setCampaignsData(AllData)
+      setDonationEventsData(AllData)
     }
     Request();
   }, [])
@@ -55,7 +55,7 @@ export default function Dashboard() {
       <CardsWrapper>
 
       {/* Card */}
-      {campaignsData.map((e) => {
+      {donationEventsData.map((e) => {
         return (
           <Card key={e.title}>
           <CardImg>
@@ -81,7 +81,7 @@ export default function Dashboard() {
             <Text>{new Date(e.timeStamp * 1000).toLocaleString()}</Text>
           </CardData>
           <Link passHref href={'/' + e.address}><Button>
-            Go to Campaign
+            Go to DonationEvent
           </Button></Link>
         </Card>
         )
