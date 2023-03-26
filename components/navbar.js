@@ -13,7 +13,7 @@ const Header = () => {
   const ThemeToggler = useContext(App);
 
   return (
-    <div className='flex items-center justify-between	 h-[70px] w-[100%]'>
+    <div className='bg-[#acd1f5] mb-10 flex items-center justify-between h-[70px] w-[100%]'>
       <h1> DonateBlock</h1>
       
       <div>
@@ -50,7 +50,7 @@ const HeaderNavWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${(props) => props.theme.bgDiv};
+  background-color:;
   padding: 6px;
   height: 50%;
   border-radius: 10px;
