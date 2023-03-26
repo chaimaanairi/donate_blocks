@@ -9,24 +9,138 @@ import DonationTracking from '../artifacts/contracts/DonationTracking.sol/Donati
 import { useState } from 'react';
 import Link from 'next/link'
 
+
 export default function Index({AllData, HealthData, EducationData,AnimalData}) {
   const [filter, setFilter] = useState(AllData);
 
   return (
-   <HomeWrapper>
+    <HomeWrapper>
 
-     {/* Filter Section */}
-     <FilterWrapper>
+      {/* Filter Section */}
+      <FilterWrapper>
         <FilterAltIcon style={{fontSize:40}} />
         <Category onClick={() => setFilter(AllData)}>All</Category>
         <Category onClick={() => setFilter(HealthData)}>Health</Category>
         <Category onClick={() => setFilter(EducationData)}>Education</Category>
         <Category onClick={() => setFilter(AnimalData)}>Animal</Category>
       </FilterWrapper>
-      
-   </HomeWrapper>
 
+      {/* Cards Container */}
+      <CardsWrapper>
+
+      {/* Card */}
+      {filter.map((e) => {
+        return (
+          <Card key={e.title}>
+          <CardImg>
+            <Image 
+              alt="Crowdfunding dapp"
+              layout='fill' 
+              src={"https://donateblock.infura-ipfs.io/ipfs/" + e.image} 
+            />
+          </CardImg>
+          <Title>
+            {e.title}
+          </Title>
+          <CardData>
+            <Text>Owner<AccountBoxIcon /></Text> 
+            <Text>{e.owner.slice(0,6)}...{e.owner.slice(39)}</Text>
+          </CardData>
+          <CardData>
+            <Text>Amount<PaidIcon /></Text> 
+            <Text>{e.amount} Matic</Text>
+          </CardData>
+          <CardData>
+            <Text><EventIcon /></Text>
+            <Text>{new Date(e.timeStamp * 1000).toLocaleString()}</Text>
+          </CardData>
+          <Link passHref href={'/' + e.address}><Button>
+            Go to DonationEvent
+          </Button></Link>
+        </Card>
+        )
+      })}
+        {/* Card */}
+
+      </CardsWrapper>
+    </HomeWrapper>
   )
+}
+
+
+
+export async function getStaticProps() {
+  const provider = new ethers.providers.JsonRpcProvider(
+    process.env.NEXT_PUBLIC_RPC_URL
+  );
+
+  const contract = new ethers.Contract(
+    process.env.NEXT_PUBLIC_ADDRESS,
+    DonationTracking.abi,
+    provider
+  );
+
+  const getAllDonationEvents = contract.filters.donationEventCreated();
+  const AllDonationEvents = await contract.queryFilter(getAllDonationEvents);
+  const AllData = AllDonationEvents.map((e) => {
+    return {
+      title: e.args.title,
+      image: e.args.imgURI,
+      owner: e.args.owner,
+      timeStamp: parseInt(e.args.timestamp),
+      amount: ethers.utils.formatEther(e.args.requiredAmount),
+      address: e.args.donationEventAddress
+    }
+  });
+
+  const getHealthDonationEvents = contract.filters.donationEventCreated(null,null,null,null,null,null,'Health');
+  const HealthDonationEvents = await contract.queryFilter(getHealthDonationEvents);
+  const HealthData = HealthDonationEvents.map((e) => {
+    return {
+      title: e.args.title,
+      image: e.args.imgURI,
+      owner: e.args.owner,
+      timeStamp: parseInt(e.args.timestamp),
+      amount: ethers.utils.formatEther(e.args.requiredAmount),
+      address: e.args.donationEventAddress
+    }
+  });
+
+  const getEducationDonationEvents = contract.filters.donationEventCreated(null,null,null,null,null,null,'education');
+  const EducationDonationEvents = await contract.queryFilter(getEducationDonationEvents);
+  const EducationData = EducationDonationEvents.map((e) => {
+    return {
+      title: e.args.title,
+      image: e.args.imgURI,
+      owner: e.args.owner,
+      timeStamp: parseInt(e.args.timestamp),
+      amount: ethers.utils.formatEther(e.args.requiredAmount),
+      address: e.args.donationEventAddress
+    }
+  });
+
+  const getAnimalDonationEvents = contract.filters.donationEventCreated(null,null,null,null,null,null,'Animal');
+  const AnimalDonationEvents = await contract.queryFilter(getAnimalDonationEvents);
+  const AnimalData = AnimalDonationEvents.map((e) => {
+    return {
+      title: e.args.title,
+      image: e.args.imgURI,
+      owner: e.args.owner,
+      timeStamp: parseInt(e.args.timestamp),
+      amount: ethers.utils.formatEther(e.args.requiredAmount),
+      address: e.args.donationEventAddress
+    }
+  });
+
+  return {
+    props: {
+      AllData,
+      HealthData,
+      EducationData,
+      AnimalData
+    },
+    revalidate: 10
+  }
 }
 
 const HomeWrapper = styled.div`
