@@ -31,7 +31,7 @@ const Footer = () => {
             </a>
         </div>
         <p className="mt-8 text-base leading-6 text-center">
-            All Rights Reserved by <span className="font-bold">DONATEBLOCK</span> Build by <span className="hover:text-green font-bold cursor-pointer hover:text-gray-500">@donateBlock</span>  | Copyright © {new Date().getFullYear()} 
+            All Rights Reserved by <span className="font-bold">DONATEBLOCKS</span> Build by <span className="hover:text-green font-bold cursor-pointer hover:text-gray-500">@donateBlocks</span>  | Copyright © {new Date().getFullYear()}   DonateBlocks.org
 
         </p>
     </div>

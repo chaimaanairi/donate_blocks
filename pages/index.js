@@ -9,7 +9,7 @@ const index = () => {
     <div id="home" className="flex md:flex-row flex-col justify-around items-center min-w-7xl">
       {/* textual area */}
       <div className="flex flex-col items-start justify-start md:ml-20 mx-10 mt-10 md:mt-0">
-        <p className="text-black text-base text-green font-bold"> DonateBlock</p>
+        <p className="text-black text-base text-green font-bold"> DonateBlocks</p>
         <h2 className="font-bold md:text-6xl text-5xl text-gray-800">
         Advance your career 
         </h2>
