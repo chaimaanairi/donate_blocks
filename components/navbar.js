@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
@@ -7,15 +8,22 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import {App} from './layout';
 import { useContext } from 'react';
 import Wallet from './wallet';
+import Logo from "../public/images/logo.png";
+import Image from 'next/image'
+
 
 const Header = () => {
   const Router = useRouter();
   const ThemeToggler = useContext(App);
 
   return (
-    <div className='bg-[#acd1f5] mb-10 flex items-center justify-between h-[70px] w-[100%]'>
-      <h1> DonateBlock</h1>
-      
+    <div className='bg-[rgb(172,209,245)] mb-10 flex items-center justify-between h-[70px] w-[100%]'>
+      <div className="flex flex-row pointer-events-none mr-20 p-10 ">
+        <Image alt="bt" src={Logo} width={100} height={100} objectFit="cover" />
+        <h1> DonateBlocks</h1>
+     </div>
+
+
       <div>
         <HeaderNavWrapper>
           <Link passHref href={'/'}><HeaderNavLinks active={Router.pathname == "/" ? true : false} >
