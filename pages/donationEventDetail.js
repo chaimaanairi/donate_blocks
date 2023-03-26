@@ -2,8 +2,8 @@
 import styled from "styled-components";
 import Image from "next/image";
 import {ethers} from 'ethers';
-import CampaignFactory from '../artifacts/contracts/Campaign.sol/CampaignFactory.json'
-import Campaign from '../artifacts/contracts/DonationTracking.sol/DonationEvent.json'
+import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
+import DonationEvent from '../artifacts/contracts/DonationTracking.sol/DonationEvent.json'
 import { useEffect, useState } from "react";
 
 
@@ -28,7 +28,7 @@ export default function Detail({Data, DonationsData}) {
     
       const contract = new ethers.Contract(
         Data.address,
-        Campaign.abi,
+        DonationEvent.abi,
         provider
       );
 
@@ -59,7 +59,7 @@ export default function Detail({Data, DonationsData}) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       
-      const contract = new ethers.Contract(Data.address, Campaign.abi, signer);
+      const contract = new ethers.Contract(Data.address, DonationEvent.abi, signer);
       
       const transaction = await contract.donate({value: ethers.utils.parseEther(amount)});
       await transaction.wait();
@@ -78,10 +78,10 @@ export default function Detail({Data, DonationsData}) {
       <LeftContainer>
         <ImageSection>
           <Image
-            alt="crowdfunding dapp"
+            alt="donateblock dapp"
             layout="fill"
             src={
-              "https://crowdfunding.infura-ipfs.io/ipfs/" + Data.image
+              "https://donateblock.infura-ipfs.io/ipfs/" + Data.image
             }
           />
         </ImageSection>
@@ -146,17 +146,17 @@ export async function getStaticPaths() {
 
   const contract = new ethers.Contract(
     process.env.NEXT_PUBLIC_ADDRESS,
-    CampaignFactory.abi,
+    DonationTracking.abi,
     provider
   );
 
-  const getAllCampaigns = contract.filters.campaignCreated();
-  const AllCampaigns = await contract.queryFilter(getAllCampaigns);
+  const getAllDonationEvents = contract.filters.donationEventCreated();
+  const AllDonationEvents = await contract.queryFilter(getAllDonationEvents);
 
   return {
-    paths: AllCampaigns.map((e) => ({
+    paths: AllDonationEvents.map((e) => ({
         params: {
-          address: e.args.campaignAddress.toString(),
+          address: e.args.donationEventAddress.toString(),
         }
     })),
     fallback: "blocking"
@@ -170,7 +170,7 @@ export async function getStaticProps(context) {
 
   const contract = new ethers.Contract(
     context.params.address,
-    Campaign.abi,
+    DonationEvent.abi,
     provider
   );
 
