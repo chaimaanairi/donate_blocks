@@ -34,7 +34,7 @@ export default function Index({AllData, HealthData, EducationData,AnimalData}) {
           <Card key={e.title}>
           <CardImg>
             <Image 
-              alt="Crowdfunding dapp"
+              alt="donateBlock dapp"
               layout='fill' 
               src={"https://donateblock.infura-ipfs.io/ipfs/" + e.image} 
             />
