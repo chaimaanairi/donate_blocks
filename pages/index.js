@@ -15,12 +15,14 @@ export default function Index({AllData, HealthData, EducationData,AnimalData}) {
   return (
    <HomeWrapper>
 
-    <div className="">
-
-      <h1 className="">Welcome to Next.js!</h1>
-      hello
-
-      </div>
+     {/* Filter Section */}
+     <FilterWrapper>
+        <FilterAltIcon style={{fontSize:40}} />
+        <Category onClick={() => setFilter(AllData)}>All</Category>
+        <Category onClick={() => setFilter(HealthData)}>Health</Category>
+        <Category onClick={() => setFilter(EducationData)}>Education</Category>
+        <Category onClick={() => setFilter(AnimalData)}>Animal</Category>
+      </FilterWrapper>
       
    </HomeWrapper>
 
