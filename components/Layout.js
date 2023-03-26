@@ -1,4 +1,5 @@
 import Header from "./header";
+import Footer from "./footer"
 import themes from "./themes";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { useState, createContext } from "react";
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
           <GlobalStyle />
           <Header />
           {children}
+          <Footer />
         </LayoutWrapper>
       </ThemeProvider>
     </App.Provider>
