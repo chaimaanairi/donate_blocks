@@ -2,8 +2,8 @@ import React from 'react'
 import styled from "styled-components";
 import Image from "next/image";
 import {ethers} from 'ethers';
-import CampaignFactory from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
-import Campaign from '../artifacts/contracts/DonationTracking.sol/DonationEvent.json'
+import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
+import DonationEvent from '../artifacts/contracts/DonationTracking.sol/DonationEvent.json'
 import { useEffect, useState } from "react";
 
 export default function Detail({Data, DonationsData}) {
