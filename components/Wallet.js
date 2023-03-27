@@ -57,8 +57,6 @@ const ConnectWalletWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: ${(props) => props.theme.bgDiv};
-  padding: 5px 9px;
-  height: 100%;
   color: ${(props) => props.theme.color};
   border-radius: 10px;
   margin-right: 15px;
