@@ -126,22 +126,23 @@ const [uploadLoading, setUploadLoading] = useState(false);
 
 return (
   <FormState.Provider value={{form, setForm, image, setImage, ImageHandler, FormHandler, setImageUrl, setStoryUrl, startDonationEvent, setUploaded}} >
-<FormWrapper>
-    <FormMain>
+
+<div className='flex justify-center w-[100%]'>
+    <div className='w-[80%]'>
         {loading == true ?
             address == "" ?
-                <Spinner>
+                <div className="w-[100%] h-[80vh] flex justify-center items-center">
                     <TailSpin height={60} />
-                </Spinner> :
-            <Address>
+                </div> :
+            <div className='flex flex-col items-center rounded-[8px] w-[100%] h-[80vh]'>
                 <h1>DonationEvent Started Sucessfully!</h1>
                 <h1>{address}</h1>
-                <Button>
+                <div className='button2'>
                     Go To DonationEvent
-                </Button>
-            </Address>
+                </div>
+            </div>
             :
-                <FormInputsWrapper>
+                <div className='flex justify-between mt-[45px]'>
                     {/* FormLeftWrapper */}
                     <div className='w-[48%]'>
                         <div className='font flex flex-col mt-[10px]'>
@@ -194,64 +195,14 @@ return (
                     </div>
 
 
-                </FormInputsWrapper>    
+                </div>    
 
         }
-    </FormMain>
-</FormWrapper>
+    </div>
+</div>
 </FormState.Provider>
 )
 }
-
-const FormWrapper = styled.div`
-    width: 100%;
-    display:flex;
-    justify-content:center;
-`
-
-const FormMain = styled.div`
-    width:80%;
-`
-
-const FormInputsWrapper = styled.div`
-    display:flex;
-    justify-content:space-between ;
-    margin-top:45px ;
-`
-
-const Spinner = styled.div`
-    width:100%;
-    height:80vh;
-    display:flex ;
-    justify-content:center ;
-    align-items:center ;
-`
-const Address = styled.div`
-    width:100%;
-    height:80vh;
-    display:flex ;
-    display:flex ;
-    flex-direction:column;
-    align-items:center ;
-    background-color:${(props) => props.theme.bgSubDiv} ;
-    border-radius:8px;
-`
-
-const Button = styled.button`
-    display: flex;
-  justify-content:center;
-  width:30% ;
-  padding:15px ;
-  color:white ;
-  background-color:#00b712 ;
-  background-image:
-      linear-gradient(180deg, #00b712 0%, #5aff15 80%) ;
-  border:none;
-  margin-top:30px ;
-  cursor: pointer;
-  font-weight:bold ;
-  font-size:large ;
-`
 
 export default Form;
 export {FormState};
