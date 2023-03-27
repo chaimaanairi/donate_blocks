@@ -1,15 +1,19 @@
 import styled from 'styled-components';
-import FormLeftWrapper from './formLeftWrapper'
 import FormRightWrapper from './formRightWrapper'
 import { createContext, useState } from 'react';
 import {TailSpin} from 'react-loader-spinner';
 import {ethers} from 'ethers';
 import {toast} from 'react-toastify';
 import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
+import { useContext } from 'react';
 
 const FormState = createContext();
 
 const Form = () => {
+
+const Handler = useContext(FormState);
+
+
   const [form, setForm] = useState({
     donationEventTitle: "",
     story: "",
@@ -94,7 +98,19 @@ return (
             </Address>
             :
                 <FormInputsWrapper>
-                    <FormLeftWrapper />
+                    {/* FormLeftWrapper */}
+                    <div className='w-[48%]'>
+                        <div className='font flex flex-col mt-[10px]'>
+                            <label>DonationEvent Title</label>
+                            <div className='p-[15px] mt-[4px] border-none rounded-[8px] outline-0	 w-[100%]' onChange={Handler.FormHandler} value={Handler.form.donationEventTitle} placeholder='DonationEvent Title' name='donationEventTitle'>
+                            </div>
+                        </div>
+                        <div className='font flex flex-col mt-[10px]'>
+                            <label>Story</label>
+                            <div className='p-[15px] mt-[4px] border-none rounded-[8px] outline-0	 max-w-[100%] min-w-[100%] overflow-hidden min-h-[160px]' onChange={Handler.FormHandler} value={Handler.form.story} name="story" placeholder='Describe Your Story'>
+                            </div>
+                        </div>
+                    </div>
                     
                     <FormRightWrapper />
                 </FormInputsWrapper>               

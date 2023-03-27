@@ -1,7 +1,6 @@
 import Navbar from "./navbar";
 import Footer from "./footer"
-import themes from "./themes";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import styled, {createGlobalStyle } from "styled-components";
 import { useState, createContext } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,8 +15,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <App.Provider value={{ changeTheme, theme }}>
-      {/*<ThemeProvider theme={themes[theme]}>*/}
+    <App.Provider>
         <ToastContainer />
         <LayoutWrapper>
           <GlobalStyle />
@@ -25,7 +23,6 @@ const Layout = ({ children }) => {
           {children}
           <Footer />
         </LayoutWrapper>
-      {/*</ThemeProvider>*/}
     </App.Provider>
   );
 }

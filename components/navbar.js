@@ -39,7 +39,7 @@ export default function Navbar() {
         <>
           <div className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
             <div className="relative flex h-20 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black">
                   <span className="sr-only">Open main menu</span>
@@ -55,11 +55,11 @@ export default function Navbar() {
                 <div className="flex flex-shrink-0 items-center">
                 <div className="flex flex-row pointer-events-none mr-10 p-10 ">
                   <Image alt="bt" src={Logo} width={90} height={90} objectFit="cover" />
-                  <h1 className='hidden sm:block'> DonateBlocks</h1>
+                  <h1 className='hidden lg:block'> DonateBlocks</h1>
                 </div>
               </div>
                 
-                <div className="hidden sm:ml-6 sm:block">
+                <div className="hidden lg:ml-6 lg:block">
                 <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <ActiveLink 
@@ -102,7 +102,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="lg:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
                 <Disclosure.Button

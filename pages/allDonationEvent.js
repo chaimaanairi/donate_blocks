@@ -15,8 +15,7 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
   const [filter, setFilter] = useState(AllData);
 
   return (
-    <HomeWrapper>
-
+    <div className='flex flex-col items-center w-[100%]'>
       <WalletBar/>
 
         <div className="my-5 text-center">
@@ -24,56 +23,61 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
       </div>
 
       {/* Filter Section */}
-      <div className='flex items-center w-[80%] mt-[15px] bg-gray-200 px-5'>
+
+      <div className='font flex items-center w-[80%] mt-[15px] bg-gray-200 px-5 cursor-pointer'>
         <FilterAltIcon style={{fontSize:30}} />
-        <Category onClick={() => setFilter(AllData)}>All</Category>
-        <Category onClick={() => setFilter(HealthData)}>Health</Category>
-        <Category onClick={() => setFilter(EducationData)}>Education</Category>
-        <Category onClick={() => setFilter(AnimalData)}>Animal</Category>
+        <div className='font px-[10px] py-[15px] my-[15px] rounded-[8px]' onClick={() => setFilter(AllData)}>All</div>
+        <div className='font px-[10px] py-[15px] my-[15px] rounded-[8px]'  onClick={() => setFilter(HealthData)}>Health</div>
+        <div className='font px-[10px] py-[15px] my-[15px] rounded-[8px]'  onClick={() => setFilter(EducationData)}>Education</div>
+        <div className='font px-[10px] py-[15px] my-[15px] rounded-[8px]' onClick={() => setFilter(AnimalData)}>Animal</div>
       </div>
 
-
-
       {/* Cards Container */}
-      <CardsWrapper>
+
+      <div className='flex justify-between flex-wrap w-[80%] mt-[25px]'>
 
       {/* Card */}
       {filter.map((e) => {
         return (
-          <Card key={e.title}>
-          <CardImg>
+          <div key={e.title} className='w-[30%] mt-[20px] hover:translate-y-[-10px] transform-0.5' >
+          <div className='relative h-[120px] w-[100%]'>
             <Image 
               alt="donateBlock dapp"
               layout='fill' 
               src={"https://donateblock.infura-ipfs.io/ipfs/" + e.image} 
             />
-          </CardImg>
-          <Title>
+          </div>
+
+          <div className='font2 mx-[2px] my-0 p-[5px] cursor-pointer'>
             {e.title}
-          </Title>
-          <CardData>
-            <Text>Owner<AccountBoxIcon /></Text> 
-            <Text>{e.owner.slice(0,6)}...{e.owner.slice(39)}</Text>
-          </CardData>
-          <CardData>
-            <Text>Amount<PaidIcon /></Text> 
-            <Text>{e.amount} Matic</Text>
-          </CardData>
-          <CardData>
-            <Text><EventIcon /></Text>
-            <Text>{new Date(e.timeStamp * 1000).toLocaleString()}</Text>
-          </CardData>
-          <Link passHref href={'/' + e.address}><Button>
+          </div>
+
+          <div className='flex justify-between mx-[2px] my-0 p-[5px] cursor-pointer'>
+
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>Owner<AccountBoxIcon /></div> 
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{e.owner.slice(0,6)}...{e.owner.slice(39)}</div>
+          </div>
+          <div className='flex justify-between mx-[2px] my-0 p-[5px] cursor-pointer'>
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>Amount<PaidIcon /></div> 
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{e.amount} Matic</div>
+          </div>
+          <div className='flex justify-between mx-[2px] my-0 p-[5px] cursor-pointer'>
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'><EventIcon /></div>
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{new Date(e.timeStamp * 1000).toLocaleString()}</div>
+          </div>
+          <Link passHref href={'/' + e.address}>
+            <div className='button'>
             Go to DonationEvent
-          </Button></Link>
-        </Card>
+          </div>
+          </Link>
+        </div>
         )
       })}
         {/* Card */}
 
-      </CardsWrapper>
+      </div>
 
-    </HomeWrapper>
+    </div>
   )
 }
 
@@ -150,85 +154,3 @@ export async function getStaticProps() {
     revalidate: 10
   }
 }
-
-const HomeWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`
-const Category = styled.div`
-  padding: 10px 15px;
-  background-color: ${(props) => props.theme.bgDiv};
-  margin: 0px 15px;
-  border-radius: 8px;
-  font-family: 'Poppins';
-  font-weight: normal;
-  cursor: pointer;
-`
-const CardsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 80%;
-  margin-top: 25px;
-`
-const Card = styled.div`
-  width: 30%;
-  margin-top: 20px;
-  background-color: ${(props) => props.theme.bgDiv};
-  &:hover{
-    transform: translateY(-10px);
-    transition: transform 0.5s;
-  }
-  
-  &:not(:hover){
-    transition: transform 0.5s;
-  }
-`
-const CardImg = styled.div`
-  position: relative;
-  height: 120px;
-  width: 100%;
-`
-const Title = styled.h2`
-  font-family: 'Roboto';
-  font-size: 18px;
-  margin: 2px 0px;
-  background-color: ${(props) => props.theme.bgSubDiv};
-  padding: 5px;
-  cursor: pointer;
-  font-weight: normal;
-`
-const CardData = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 2px 0px;
-  background-color: ${(props) => props.theme.bgSubDiv};
-  padding: 5px;
-  cursor: pointer;
-  `
-const Text = styled.p`
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto';
-  font-size: 18px;
-  font-weight: bold;
-`
-const Button = styled.button`
-  padding: 8px;
-  text-align: center;
-  width: 100%;
-  background-color:#00b712 ;
-  background-image:
-      linear-gradient(180deg, #00b712 0%, #5aff15 80%); 
-  border: none;
-  cursor: pointer;
-  font-family: 'Roboto';
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 14px;
-  font-weight: bold;
-  `
