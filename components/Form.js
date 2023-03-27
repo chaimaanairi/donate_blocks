@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import FormRightWrapper from './formRightWrapper'
 import { createContext, useState, useContext} from 'react';
 import {TailSpin} from 'react-loader-spinner';
 import {ethers} from 'ethers';
@@ -196,7 +195,7 @@ return (
 
 
                 </FormInputsWrapper>    
-                           
+
         }
     </FormMain>
 </FormWrapper>
