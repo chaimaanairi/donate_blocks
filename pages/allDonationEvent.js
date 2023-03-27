@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import styled from 'styled-components';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -9,7 +10,6 @@ import DonationTracking from '../artifacts/contracts/DonationTracking.sol/Donati
 import { useState } from 'react';
 import Link from 'next/link'
 import WalletBar from '../components/web3/walletbar';
-import SearchIcon from '@mui/icons-material/Search';
 
 export default function AllDonationEvents({AllData, HealthData, EducationData,AnimalData}) {
   const [filter, setFilter] = useState(AllData);
@@ -72,6 +72,7 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
         {/* Card */}
 
       </CardsWrapper>
+
     </HomeWrapper>
   )
 }
