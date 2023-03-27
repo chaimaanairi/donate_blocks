@@ -8,7 +8,8 @@ import { ethers } from 'ethers';
 import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
 import { useState } from 'react';
 import Link from 'next/link'
-
+import WalletBar from '../components/web3/walletbar';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function AllDonationEvents({AllData, HealthData, EducationData,AnimalData}) {
   const [filter, setFilter] = useState(AllData);
@@ -16,14 +17,22 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
   return (
     <HomeWrapper>
 
+      <WalletBar/>
+
+        <div className="my-5 text-center">
+          <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">All donationEvents</h2>
+      </div>
+
       {/* Filter Section */}
-      <FilterWrapper>
-        <FilterAltIcon style={{fontSize:40}} />
+      <div className='flex items-center w-[80%] mt-[15px] bg-gray-200 px-5'>
+        <FilterAltIcon style={{fontSize:30}} />
         <Category onClick={() => setFilter(AllData)}>All</Category>
         <Category onClick={() => setFilter(HealthData)}>Health</Category>
         <Category onClick={() => setFilter(EducationData)}>Education</Category>
         <Category onClick={() => setFilter(AnimalData)}>Animal</Category>
-      </FilterWrapper>
+      </div>
+
+
 
       {/* Cards Container */}
       <CardsWrapper>
@@ -146,12 +155,6 @@ const HomeWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-`
-const FilterWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin-top: 15px;
 `
 const Category = styled.div`
   padding: 10px 15px;

@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
 
   return (
     <App.Provider value={{ changeTheme, theme }}>
-      <ThemeProvider theme={themes[theme]}>
+      {/*<ThemeProvider theme={themes[theme]}>*/}
         <ToastContainer />
         <LayoutWrapper>
           <GlobalStyle />
@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
           {children}
           <Footer />
         </LayoutWrapper>
-      </ThemeProvider>
+      {/*</ThemeProvider>*/}
     </App.Provider>
   );
 }

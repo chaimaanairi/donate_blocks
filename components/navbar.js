@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <section className='mb-20'>
   
-    <Disclosure as="nav" className="bg-[rgb(172,209,245)] fixed top-0 left-0 right-0 z-10 ">
+    <Disclosure as="nav" className="bg-[#6AA4B0] fixed top-0 left-0 right-0 z-10 ">
       {({ open }) => (
         <>
           <div className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
