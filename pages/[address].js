@@ -77,12 +77,12 @@ export default function Detail({Data, DonationsData}) {
     <div className="m-10 flex flex-col justify-center">
       {/* title + intro */}
       <div className="my-20 flex flex-col items-center justify-center">
-        <h2 className="mb-10 text-4xl font-bold">DonationEvent Details</h2>
-        <p className="text-xl ml-10">bellow the donationevent details</p>
+        <h2 className="text-4xl font-bold">DonationEvent Details</h2>
       </div>
-      <div className="mb-20 flex lg:flex-row flex-col lg:items-start items-center">
+      <div className=" flex lg:flex-row flex-col lg:items-start items-center">
         <div className="relative lg:w-[50%] w-[100%] h-[350px]">
           <Image
+          className="rounded-[10px]"
             alt="donateblock dapp"
             layout="fill"
             src={
@@ -91,34 +91,34 @@ export default function Detail({Data, DonationsData}) {
           />
         </div>
         <div className="flex flex-col m-10">
-          <h2 className="text-4xl font-bold">{Data.title}</h2>
-          <h2>DonationEvent Creator</h2>
-          <p className="bg-gray-200 mb-10">{Data.address}</p>
-          <h2>DonationEvent Description</h2>
-          <p className="bg-gray-200">{story}</p>
+          <h2 className=" mb-10 text-3xl font-bold">{Data.title}</h2>
+          <h2 className="flex justify-center text-[18px] font-bold">DonationEvent Creator</h2>
+          <p className="bg-gray-200 mt-3 mb-10 p-4 rounded-[10px] ">{Data.address}</p>
+          <h2 className="flex justify-center text-[18px] font-bold">DonationEvent Description</h2>
+          <p className="bg-gray-200 mt-3 mb-10 p-4 rounded-[10px]">{story}</p>
       </div>
       <div className="flex flex-col m-10">
-          <div className="bg-gray-200 mb-10">
-            <p className="m-[2px] p-0 font-normal">Required Amount</p>
-            <p className="m-[2px] p-0 font-normal">{Data.requiredAmount} Matic</p>
+          <div className="bg-gray-200 mb-10 mt-3 p-4 rounded-[10px] w-[190px]">
+            <p className="flex justify-center m-[2px] font-bold">Required Amount</p>
+            <p className="flex justify-center m-[2px] font-normal">{Data.requiredAmount} Matic</p>
           </div>
-          <div className="bg-gray-200">
-            <p className="m-[2px] p-0 font-normal">Received Amount</p>
-            <p className="m-[2px] p-0 font-normal">{Data.receivedAmount} Matic</p>
+          <div className="bg-gray-200 mb-10 mt-3 p-4 rounded-[10px] w-[190px]">
+            <p className="flex justify-center m-[2px] font-bold">Received Amount</p>
+            <p className="flex justify-center m-[2px] font-normal">{Data.receivedAmount} Matic</p>
           </div>
           
         </div>
       </div>
-      <div className="mb-20  flex lg:flex-row flex-col  lg:items-start items-center">
-        <div className="flex flex-col m-10 lg:w-[50%] w-[100%]">
+      <div className=" flex lg:flex-row flex-col lg:items-start items-center">
+        <div className="flex flex-col m-5 lg:w-[50%] w-[100%]">
           <h2 className="text-2xl font-bold">All Donations</h2>
           <div className="h-[280px] mt-[15px]">
-          <div className="h-[65%] overflow-y-auto">
-            <div className="uppercase  p-[4px] text-center bg-[4cd137]">Recent Donation</div>
+          <div className="h-[65%] p-5 overflow-y-auto bg-slate-300 rounded-[8px]">
+            <div className="uppercase text-center font-bold mb-5">Recent Donation</div>
             {DonationsData.map((e) => {
               return (
                 <div  className="flex justify-between mt-[4px] px-[4px] py-[8px]" key={e.timestamp}>
-                <p>{e.donar.slice(0,6)}...{e.donar.slice(39)}</p>
+                <p>{e.donar}</p>
                 <p>{e.amount} Matic</p>
                 <p>{new Date(e.timestamp * 1000).toLocaleString()}</p>
               </div>
@@ -126,12 +126,12 @@ export default function Detail({Data, DonationsData}) {
             })
             }
           </div>
-          <div className="h-[35%] overflow-y-auto">
-            <div className="uppercase  p-[4px] text-center bg-[4cd137]">My Past Donation</div>
+          <div className="mt-5 h-[65%] p-5 overflow-y-auto bg-slate-300 rounded-[8px]">
+            <div className="uppercase text-center font-bold mb-5">My Past Donation</div>
             {mydonations.map((e) => {
               return (
                 <div className="flex justify-between mt-[4px] px-[4px] py-[8px]" key={e.timestamp}>
-                <p>{e.donar.slice(0,6)}...{e.donar.slice(39)}</p>
+                <p>{e.donar}</p>
                 <p>{e.amount} Matic</p>
                 <p>{new Date(e.timestamp * 1000).toLocaleString()}</p>
               </div>
@@ -142,14 +142,14 @@ export default function Detail({Data, DonationsData}) {
         </div>  
       </div>
       <div className="flex flex-col m-10">
-      <div className="flex justify-between items-center mt-[10px] w-[100%]">
-          <input className="px-[8px] py-[15px] border-none w-[40%] h-[40px]" value={amount} onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount To Donate" />
+      <div className="flex flex-row  items-center mt-[10px] w-[100%]">
+          <input className="mx-10 px-[8px] py-[15px] border-[1px] border-black w-[40%] h-[40px]" value={amount} onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount To Donate" />
           <button className="flex justify-center font-bold w-[30%] p-[10px] bg-gray-300 cursor-pointer rounded-2xl" onClick={DonateFunds}>
             Donate 
           </button>
       </div>
       {/**share in social media */}
-      <div className="mt-20 bg-gray-200">
+      <div className="mt-[50px] bg-gray-200">
           <h2 className="text-xl font-bold flex justify-center">Share the donationEvent in Social Media</h2>
           <div className="flex flex-row">
             <div className="flex flex-row m-10">
