@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/exhaustive-deps */
 import styled from "styled-components";
 import Image from "next/image";
@@ -5,7 +7,7 @@ import {ethers} from 'ethers';
 import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
 import DonationEvent from '../artifacts/contracts/DonationTracking.sol/DonationEvent.json'
 import { useEffect, useState } from "react";
-
+import {Facebook} from "../public/images/facebook.png"
 
 export default function Detail({Data, DonationsData}) {
   const [mydonations, setMydonations] = useState([]);
@@ -69,14 +71,17 @@ export default function Detail({Data, DonationsData}) {
       
   } catch (error) {
       console.log(error);
-  }
-
-  }
+  }  }
 
   return (
-    <DetailWrapper>
-      <LeftContainer>
-        <ImageSection>
+    <div className="m-10 flex flex-col justify-center">
+      {/* title + intro */}
+      <div className="my-20 flex flex-col items-center justify-center">
+        <h2 className="mb-10 text-4xl font-bold">DonationEvent Details</h2>
+        <p className="text-xl ml-10">bellow the donationevent details</p>
+      </div>
+      <div className="mb-20 flex lg:flex-row flex-col lg:items-start items-center">
+        <div className="relative lg:w-[50%] w-[100%] h-[350px]">
           <Image
             alt="donateblock dapp"
             layout="fill"
@@ -84,57 +89,101 @@ export default function Detail({Data, DonationsData}) {
               "https://donateblock.infura-ipfs.io/ipfs/" + Data.image
             }
           />
-        </ImageSection>
-        <Text>
-          {story}
-        </Text>
-      </LeftContainer>
-      <RightContainer>
-        <Title>{Data.title}</Title>
-        <DonateSection>
-          <Input value={amount} onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount To Donate" />
-          <Donate onClick={DonateFunds}>Donate</Donate>
-        </DonateSection>
-        <FundsData>
-          <Funds>
+        </div>
+        <div className="flex flex-col m-10">
+          <h2 className="text-4xl font-bold">{Data.title}</h2>
+          <h2>DonationEvent Creator</h2>
+          <p className="bg-gray-200 mb-10">{Data.address}</p>
+          <h2>DonationEvent Description</h2>
+          <p className="bg-gray-200">{story}</p>
+      </div>
+      <div className="flex flex-col m-10">
+          <div className="bg-gray-200 mb-10">
             <FundText>Required Amount</FundText>
             <FundText>{Data.requiredAmount} Matic</FundText>
-          </Funds>
-          <Funds>
+          </div>
+          <div className="bg-gray-200">
             <FundText>Received Amount</FundText>
             <FundText>{Data.receivedAmount} Matic</FundText>
-          </Funds>
-        </FundsData>
-        <Donated>
+          </div>
+          
+        </div>
+      </div>
+      <div className="mb-20  flex lg:flex-row flex-col  lg:items-start items-center">
+        <div className="flex flex-col m-10 lg:w-[50%] w-[100%]">
+          <h2 className="text-2xl font-bold">All Donations</h2>
+          <Donated>
           <LiveDonation>
-            <DonationTitle>Recent Donation</DonationTitle>
+            <div className="uppercase  p-[4px] text-center bg-[4cd137]">Recent Donation</div>
             {DonationsData.map((e) => {
               return (
-                <Donation key={e.timestamp}>
-                <DonationData>{e.donar.slice(0,6)}...{e.donar.slice(39)}</DonationData>
-                <DonationData>{e.amount} Matic</DonationData>
-                <DonationData>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
-              </Donation>
+                <div  className="flex justify-between mt-[4px] px-[4px] py-[8px]" key={e.timestamp}>
+                <p>{e.donar.slice(0,6)}...{e.donar.slice(39)}</p>
+                <p>{e.amount} Matic</p>
+                <p>{new Date(e.timestamp * 1000).toLocaleString()}</p>
+              </div>
               )
             })
             }
           </LiveDonation>
-          <MyDonation>
-            <DonationTitle>My Past Donation</DonationTitle>
+          <div className="h-[35%] overflow-y-auto">
+            <div className="uppercase  p-[4px] text-center bg-[4cd137]">My Past Donation</div>
             {mydonations.map((e) => {
               return (
-                <Donation key={e.timestamp}>
-                <DonationData>{e.donar.slice(0,6)}...{e.donar.slice(39)}</DonationData>
-                <DonationData>{e.amount} Matic</DonationData>
-                <DonationData>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
-              </Donation>
+                <div className="flex justify-between mt-[4px] px-[4px] py-[8px]" key={e.timestamp}>
+                <p>{e.donar.slice(0,6)}...{e.donar.slice(39)}</p>
+                <p>{e.amount} Matic</p>
+                <p>{new Date(e.timestamp * 1000).toLocaleString()}</p>
+              </div>
               )
             })
             }
-          </MyDonation>
-        </Donated>
-      </RightContainer>
-    </DetailWrapper>
+          </div>
+        </Donated>  
+      </div>
+      <div className="flex flex-col m-10">
+      <div className="flex justify-between items-center mt-[10px] w-[100%]">
+          <input className="px-[8px] py-[15px] border-none w-[40%] h-[40px]" value={amount} onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount To Donate" />
+          <button className="flex justify-center font-bold w-[30%] p-[10px] bg-gray-300 cursor-pointer rounded-2xl" onClick={DonateFunds}>
+            Donate 
+          </button>
+      </div>
+      {/**share in social media */}
+      <div className="mt-20 bg-gray-200">
+          <h2 className="text-xl font-bold flex justify-center">Share the donationEvent in Social Media</h2>
+          <div className="flex flex-row">
+            <div className="flex flex-row m-10">
+            <div className="flex flex-col">
+              <h2>Share in Twitter</h2>
+              <a href={`https://twitter.com/intent/tweet?text=Donate to ${Data.title} at ${Data.address}&url=https://donateblock.vercel.app/donationevent/${Data.address}`} target="_blank">
+              <img src="./twitter"/>
+              </a>
+            </div>
+            <div className="flex flex-col">
+              <h2>Share in Facebook</h2>
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=https://donateblock.vercel.app/donationevent/${Data.address}`} target="_blank">
+              <Image alt="fb" src={Facebook} width={20} height={20}  />
+              </a>
+              </div>
+              <div className="flex flex-col">
+              <h2>Share in Instagram</h2>
+              <a href={`https://www.instagram.com/sharer/sharer.php?u=https://donateblock.vercel.app/donationevent/${Data.address}`} target="_blank">
+              <img src="./instagram"/> 
+              </a>
+              </div>
+              <div className="flex flex-col">
+              <h2>Share in Whatsapp</h2>
+              <a href={`https://api.whatsapp.com/send?text=Donate to ${Data.title} at ${Data.address} https://donateblock.vercel.app/donationevent/${Data.address}`} target="_blank">
+              <img src="./Whatsapp"/> 
+              </a>
+              </div>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+
+    </div>
   );
 }
 
@@ -213,84 +262,6 @@ export async function getStaticProps(context) {
 
 }
 
-
-
-
-const DetailWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  width: 98%;
-`;
-const LeftContainer = styled.div`
-  width: 45%;
-`;
-const RightContainer = styled.div`
-  width: 50%;
-`;
-const ImageSection = styled.div`
-  width: 100%;
-  position: relative;
-  height: 350px;
-`;
-const Text = styled.p`
-  font-family: "Roboto";
-  font-size: large;
-  color: ${(props) => props.theme.color};
-  text-align: justify;
-`;
-const Title = styled.h1`
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins";
-  font-size: x-large;
-  color: ${(props) => props.theme.color};
-`;
-const DonateSection = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-`;
-const Input = styled.input`
-  padding: 8px 15px;
-  background-color: ${(props) => props.theme.bgDiv};
-  color: ${(props) => props.theme.color};
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  font-size: large;
-  width: 40%;
-  height: 40px;
-`;
-const Donate = styled.button`
-  display: flex;
-  justify-content: center;
-  width: 40%;
-  padding: 15px;
-  color: white;
-  background-color: #00b712;
-  background-image: linear-gradient(180deg, #00b712 0%, #5aff15 80%);
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 8px;
-  font-size: large;
-`;
-const FundsData = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-`;
-const Funds = styled.div`
-  width: 45%;
-  background-color: ${(props) => props.theme.bgDiv};
-  padding: 8px;
-  border-radius: 8px;
-  text-align: center;
-`;
 const FundText = styled.p`
   margin: 2px;
   padding: 0;
@@ -306,29 +277,5 @@ const LiveDonation = styled.div`
   height: 65%;
   overflow-y: auto;
 `;
-const MyDonation = styled.div`
-  height: 35%;
-  overflow-y: auto;
-`;
-const DonationTitle = styled.div`
-  font-family: "Roboto";
-  font-size: x-small;
-  text-transform: uppercase;
-  padding: 4px;
-  text-align: center;
-  background-color: #4cd137;
-`;
-const Donation = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4px;
-  background-color: ${(props) => props.theme.bgSubDiv};
-  padding: 4px 8px;
-`;
-const DonationData = styled.p`
-  color: ${(props) => props.theme.color};
-  font-family: "Roboto";
-  font-size: large;
-  margin: 0;
-  padding: 0;
-`;
+
+

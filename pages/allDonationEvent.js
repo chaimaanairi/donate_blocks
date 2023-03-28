@@ -22,7 +22,7 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
         <div className="my-5 text-center">
           <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">All donationEvents</h2>
       </div>
-
+ 
       {/* Filter Section */}
 
       <div className='font flex items-center w-[70%] py-[8px] my-[15px] bg-gray-200 px-5 rounded-[24px]'>
