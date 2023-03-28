@@ -70,12 +70,13 @@ export default function Detail({Data, DonationsData}) {
   } catch (error) {
       console.log(error);
   }
-  
+
   }
+
   return (
-    <div className="flex justify-between p-[20px] w-[98%]">
-      <div className="w-[45%]">
-        <div className="relative w-[100%] h-[350px]">
+    <DetailWrapper>
+      <LeftContainer>
+        <ImageSection>
           <Image
             alt="donateblock dapp"
             layout="fill"
@@ -83,57 +84,57 @@ export default function Detail({Data, DonationsData}) {
               "https://donateblock.infura-ipfs.io/ipfs/" + Data.image
             }
           />
-        </div>
-        <div className="font mt-10">
+        </ImageSection>
+        <Text>
           {story}
-        </div>
-      </div>
-      <div className="w-[50%]">
-        <div className="font p-0 m-0 ">{Data.title}</div>
-        <div className="flex w-[100%] items-center mt-[10px] justify-between">
-          <div className="px-[8px] py-[15px] border-none rounded-[8px] outline-none w-[40%] h-[40%]" value={amount} onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount To Donate" />
-          <div className="font flex justify-center w-[40%] p-[15px] bg-[#00b712] border-none cursor-pointer font-bold rounded-[8px]" onClick={DonateFunds}>Donate</div>
-        </div>
-        <div className="flex w-[100%] justify-between mt-[10px]">
-          <div className="w-[45%] p-[8px] rounded-[8px] text-center">
-            <div className="font m-[2px] p-0">Required Amount</div>
-            <div className="font m-[2px] p-0">{Data.requiredAmount} Matic</div>
-          </div>
-          <div className="w-[45%] p-[8px] rounded-[8px] text-center">
-            <div className="font m-[2px] p-0">Received Amount</div>
-            <div className="font m-[2px] p-0">{Data.receivedAmount} Matic</div>
-          </div>
-        </div>
-        <div className="h-[280 px] mt-[15px] ">
-       <div className="h-[65%] overflow-y-auto">
-            <div className="font p-[4px] bg-[#4cd137] text-xs uppercase">Recent Donation</div>
+        </Text>
+      </LeftContainer>
+      <RightContainer>
+        <Title>{Data.title}</Title>
+        <DonateSection>
+          <Input value={amount} onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount To Donate" />
+          <Donate onClick={DonateFunds}>Donate</Donate>
+        </DonateSection>
+        <FundsData>
+          <Funds>
+            <FundText>Required Amount</FundText>
+            <FundText>{Data.requiredAmount} Matic</FundText>
+          </Funds>
+          <Funds>
+            <FundText>Received Amount</FundText>
+            <FundText>{Data.receivedAmount} Matic</FundText>
+          </Funds>
+        </FundsData>
+        <Donated>
+          <LiveDonation>
+            <DonationTitle>Recent Donation</DonationTitle>
             {DonationsData.map((e) => {
               return (
-                <div className="flex justify-between mt-[4px] px-[4px] py-[8px]" key={e.timestamp}>
-                <div className="font2 m-0 p-0">{e.donar.slice(0,6)}...{e.donar.slice(39)}</div>
-                <div className="font2 m-0 p-0">{e.amount} Matic</div>
-                <div className="font2 m-0 p-0">{new Date(e.timestamp * 1000).toLocaleString()}</div>
-              </div>
+                <Donation key={e.timestamp}>
+                <DonationData>{e.donar.slice(0,6)}...{e.donar.slice(39)}</DonationData>
+                <DonationData>{e.amount} Matic</DonationData>
+                <DonationData>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
+              </Donation>
               )
             })
             }
-          </div>
-          <div className="h-[35%] overflow-y-auto">
-            <div className="font p-[4px] bg-[#4cd137] text-xs uppercase">My Past Donation</div>
+          </LiveDonation>
+          <MyDonation>
+            <DonationTitle>My Past Donation</DonationTitle>
             {mydonations.map((e) => {
               return (
-                <div className="flex justify-between mt-[4px] px-[4px] py-[8px]"  key={e.timestamp}>
-                <div className="font2 m-0 p-0">{e.donar.slice(0,6)}...{e.donar.slice(39)}</div>
-                <div className="font2 m-0 p-0">{e.amount} Matic</div>
-                <div className="font2 m-0 p-0">{new Date(e.timestamp * 1000).toLocaleString()}</div>
-              </div>
+                <Donation key={e.timestamp}>
+                <DonationData>{e.donar.slice(0,6)}...{e.donar.slice(39)}</DonationData>
+                <DonationData>{e.amount} Matic</DonationData>
+                <DonationData>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
+              </Donation>
               )
             })
             }
-          </div>
-        </div>
-      </div>
-    </div>
+          </MyDonation>
+        </Donated>
+      </RightContainer>
+    </DetailWrapper>
   );
 }
 
@@ -211,3 +212,123 @@ export async function getStaticProps(context) {
 
 
 }
+
+
+
+
+const DetailWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 98%;
+`;
+const LeftContainer = styled.div`
+  width: 45%;
+`;
+const RightContainer = styled.div`
+  width: 50%;
+`;
+const ImageSection = styled.div`
+  width: 100%;
+  position: relative;
+  height: 350px;
+`;
+const Text = styled.p`
+  font-family: "Roboto";
+  font-size: large;
+  color: ${(props) => props.theme.color};
+  text-align: justify;
+`;
+const Title = styled.h1`
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins";
+  font-size: x-large;
+  color: ${(props) => props.theme.color};
+`;
+const DonateSection = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+`;
+const Input = styled.input`
+  padding: 8px 15px;
+  background-color: ${(props) => props.theme.bgDiv};
+  color: ${(props) => props.theme.color};
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: large;
+  width: 40%;
+  height: 40px;
+`;
+const Donate = styled.button`
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  padding: 15px;
+  color: white;
+  background-color: #00b712;
+  background-image: linear-gradient(180deg, #00b712 0%, #5aff15 80%);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: large;
+`;
+const FundsData = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+`;
+const Funds = styled.div`
+  width: 45%;
+  background-color: ${(props) => props.theme.bgDiv};
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+`;
+const FundText = styled.p`
+  margin: 2px;
+  padding: 0;
+  font-family: "Poppins";
+  font-size: normal;
+`;
+const Donated = styled.div`
+  height: 280px;
+  margin-top: 15px;
+  background-color: ${(props) => props.theme.bgDiv};
+`;
+const LiveDonation = styled.div`
+  height: 65%;
+  overflow-y: auto;
+`;
+const MyDonation = styled.div`
+  height: 35%;
+  overflow-y: auto;
+`;
+const DonationTitle = styled.div`
+  font-family: "Roboto";
+  font-size: x-small;
+  text-transform: uppercase;
+  padding: 4px;
+  text-align: center;
+  background-color: #4cd137;
+`;
+const Donation = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  background-color: ${(props) => props.theme.bgSubDiv};
+  padding: 4px 8px;
+`;
+const DonationData = styled.p`
+  color: ${(props) => props.theme.color};
+  font-family: "Roboto";
+  font-size: large;
+  margin: 0;
+  padding: 0;
+`;

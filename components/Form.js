@@ -147,8 +147,8 @@ return (
                     <div className='w-[48%]'>
                         <div className='font flex flex-col mt-[10px]'>
                             <label>DonationEvent Title</label>
-                            <div className='p-[15px] mt-[4px] border-none rounded-[8px] outline-0	 w-[100%]' onChange={Handler.FormHandler} value={Handler.form.donationEventTitle} placeholder='DonationEvent Title' name='donationEventTitle'>
-                            </div>
+                            <input className='p-[15px] mt-[4px] border-none rounded-[8px] outline-0 w-[100%]' onChange={Handler.FormHandler} value={Handler.form.donationEventTitle} placeholder='DonationEvent Title' name='donationEventTitle'>
+                            </input>
                         </div>
                         <div className='font flex flex-col mt-[10px]'>
                             <label>Story</label>
