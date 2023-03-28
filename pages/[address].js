@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function Detail({Data, DonationsData}) {
   const [mydonations, setMydonations] = useState([]);
-  const [story, setStory] = useState('');
+  const [story, setStory] = useState();
   const [amount, setAmount] = useState();
   const [change, setChange] = useState(false);
 

@@ -151,8 +151,8 @@ return (
                         </div>
                         <div className='font flex flex-col mt-[10px]'>
                             <label>Story</label>
-                            <div className='p-[15px] mt-[4px] border-none rounded-[8px] outline-0	 max-w-[100%] min-w-[100%] overflow-hidden min-h-[160px]' onChange={Handler.FormHandler} value={Handler.form.story} name="story" placeholder='Describe Your Story'>
-                            </div>
+                            <textarea className='p-[15px] mt-[4px] border-none rounded-[8px] outline-0	 max-w-[100%] min-w-[100%] overflow-hidden min-h-[160px]' onChange={Handler.FormHandler} value={Handler.form.story} name="story" placeholder='Describe Your Story'>
+                            </textarea>
                         </div>
                     </div>
                     
