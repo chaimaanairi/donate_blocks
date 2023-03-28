@@ -5,8 +5,8 @@ import {ethers} from 'ethers';
 import {toast} from 'react-toastify';
 import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
 
-import FormLeftWrapper from './formLeftWrapper';
-import FormRightWrapper from './formRightWrapper';
+import FormUp from './formUp';
+import FormDown from './formDown';
 
 const FormState = createContext();
 
@@ -113,8 +113,8 @@ return (
             :
                 <div className='flex flex-col mt-[30px]'>
                     <div className='flex flex-col'> </div>
-                    <FormLeftWrapper />
-                    <FormRightWrapper />
+                    <FormUp />
+                    <FormDown />
                 </div>    
 
         }

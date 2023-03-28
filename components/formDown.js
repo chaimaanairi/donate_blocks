@@ -18,7 +18,7 @@ const client = IPFSHTTPClient({
   }
 })
 
-const FormRightWrapper = () => {
+const FormDown = () => {
   const Handler = useContext(FormState);
 
   const [uploadLoading, setUploadLoading] = useState(false);
@@ -179,4 +179,4 @@ const Button = styled.button`
   font-size:large ;
 `
 
-export default FormRightWrapper
+export default FormDown
