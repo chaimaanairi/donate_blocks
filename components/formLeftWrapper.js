@@ -6,31 +6,21 @@ const FormLeftWrapper = () => {
   const Handler = useContext(FormState);
 
   return (
-    <FormLeft>
-      <FormInput>
+    <div className=''>
+      <div>
         <label>Campaign Title</label>
         <Input onChange={Handler.FormHandler} value={Handler.form.campaignTitle} placeholder='Campaign Title' name='campaignTitle'>
         </Input>
-      </FormInput>
-      <FormInput>
+      </div>
+      <div>
         <label>Story</label>
         <TextArea onChange={Handler.FormHandler} value={Handler.form.story} name="story" placeholder='Describe Your Story'>
         </TextArea>
-      </FormInput>
-    </FormLeft>
+      </div>
+    </div>
   )
 }
 
-const FormLeft = styled.div`
-  width:48%;
-`
-
-const FormInput = styled.div`
-  display:flex ;
-  flex-direction:column;
-  font-family:'poppins';
-  margin-top:10px ;
-`
 const Input = styled.input`
   padding:15px;
   background-color:${(props) => props.theme.bgDiv} ;
