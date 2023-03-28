@@ -9,20 +9,6 @@ import Image from 'next/image'
 import ActiveLink from "./link"
 import Wallet from './wallet';
 
-const networks = {
-  polygon: {
-    chainId: `0x${Number(80001).toString(16)}`,
-    chainName: "Polygon Testnet",
-    nativeCurrency: {
-      name: "MATIC",
-      symbol: "MATIC",
-      decimals: 18,
-    },
-    rpcUrls: ["https://rpc-mumbai.maticvigil.com/"],
-    blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
-  },
-};
-
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "All donationEvents", href: "/allDonationEvent", current: false },
@@ -90,15 +76,7 @@ export default function Navbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                 {/* metamask install */}               
-                <button
-                  type="button"
-                  className="mr-2 inline-flex items-center rounded-2xl bg-white text-black px-2 py-1 text-sm font-medium"
-                > 
-                <svg className="-ml-0.5 mr-1.5 h-2 w-2 text-gray-500" fill="currentColor" viewBox="0 0 8 8">
-                  <circle cx={4} cy={4} r={3} />
-                </svg>
-                {networks["polygon"].chainName}
-                </button>
+               
                 
                 <Wallet/>
                 
