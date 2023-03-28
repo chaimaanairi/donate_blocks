@@ -41,7 +41,9 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
         return (
           
           <div key={e.title} className='p-2 rounded-[15px] bg-gray-400 m-4 mt-[20px]' >
-          <div className='relative h-[200px] w-[50%] m-2'>
+          
+          <div className='flex flex-row items-center justify-center'>
+            <div className='relative h-[200px] w-[50%] m-2'>
             <Image 
               alt="donateBlock dapp"
               layout='fill' 
@@ -49,25 +51,30 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
             />
           </div>
 
-          <div className='font2 mx-[2px] my-0 p-[5px]'>
+        <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-row justify-center mx-[2px] p-[5px]'>
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold mr-3'><AccountBoxIcon className='mx-1' />Owner: </div> 
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{e.owner.slice(0,8)}...{e.owner.slice(39)}</div>
+          </div>
+          <div className='flex justify-between mx-[2px] my-0 p-[5px] '>
+            <div className='font2 flex items-center m-0 p-0 font-bold'><PaidIcon className='mx-3' />Amount</div> 
+            <div className='font2 flex items-center m-0 p-0 font-bold'>{e.amount} Matic</div>
+          </div>
+          <div className='flex justify-between mx-[2px] my-0 p-[5px]'>
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'><EventIcon className='mx-3'/></div>
+            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{new Date(e.timeStamp * 1000).toLocaleString()}</div>
+          </div>
+      </div>
+
+          </div>
+
+          <div className='flex justify-center font-bold text-2xl my-0 p-[5px]'>
             {e.title}
           </div>
 
-          <div className='flex justify-between mx-[2px] my-0 p-[5px]'>
-
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>Owner<AccountBoxIcon /></div> 
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{e.owner.slice(0,6)}...{e.owner.slice(39)}</div>
-          </div>
-          <div className='flex justify-between mx-[2px] my-0 p-[5px] '>
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>Amount<PaidIcon /></div> 
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{e.amount} Matic</div>
-          </div>
-          <div className='flex justify-between mx-[2px] my-0 p-[5px]'>
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'><EventIcon /></div>
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{new Date(e.timeStamp * 1000).toLocaleString()}</div>
-          </div>
+          
           <Link className='flex justify-center' passHref href={'/' + e.address}>
-            <div className='my-5 font-bold hover:scale-105 bg-[#fff] py-3 px-5 text-center w-[200px] rounded-[10px]'>
+            <div className='mt-5 font-bold hover:scale-105 bg-[#fff] py-3 px-5 text-center w-[200px] rounded-[10px]'>
             Go to DonationEvent
           </div>
           </Link>
