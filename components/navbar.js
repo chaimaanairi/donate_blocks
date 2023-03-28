@@ -49,10 +49,12 @@ export default function Navbar() {
 
               <div className="flex items-center justify-between">
                 <div className="flex flex-shrink-0 items-center">
-                <div className="flex flex-row pointer-events-none mr-10 p-10 ">
+                <a className='cursor-pointer' href="/">
+                <div className="flex flex-row pointer-events-none mr-10 p-10">
                   <Image alt="bt" src={Logo} width={90} height={90} objectFit="cover" />
                   <h1 className='hidden lg:block'> DonateBlocks</h1>
                 </div>
+                </a>
               </div>
                 
                 <div className="hidden lg:ml-6 lg:block">
