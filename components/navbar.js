@@ -103,9 +103,6 @@ export default function Navbar() {
                 <Wallet/>
                 
                 {/* metamask button end */}
-
-
-                {/* Profile dropdown */}
            
               </div>
             </div>
