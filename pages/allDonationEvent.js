@@ -9,7 +9,8 @@ import { ethers } from 'ethers';
 import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
 import { useState } from 'react';
 import Link from 'next/link'
-import WalletBar from '../components/web3/walletbar';
+import WalletBar from '../components/web3/walletbar'; 
+
 
 export default function AllDonationEvents({AllData, HealthData, EducationData,AnimalData}) {
   const [filter, setFilter] = useState(AllData);
@@ -24,23 +25,23 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
 
       {/* Filter Section */}
 
-      <div className='font flex items-center w-[80%] mt-[15px] bg-gray-200 px-5 cursor-pointer'>
-        <FilterAltIcon style={{fontSize:30}} />
-        <div className='font px-[10px] py-[15px] my-[15px] rounded-[8px]' onClick={() => setFilter(AllData)}>All</div>
-        <div className='font px-[10px] py-[15px] my-[15px] rounded-[8px]'  onClick={() => setFilter(HealthData)}>Health</div>
-        <div className='font px-[10px] py-[15px] my-[15px] rounded-[8px]'  onClick={() => setFilter(EducationData)}>Education</div>
-        <div className='font px-[10px] py-[15px] my-[15px] rounded-[8px]' onClick={() => setFilter(AnimalData)}>Animal</div>
+      <div className='font flex items-center w-[70%] py-[8px] my-[15px] bg-gray-200 px-5 rounded-[24px]'>
+        <FilterAltIcon className='mr-[10px]' style={{fontSize:30}} />
+        <div className='font px-5 py-1 rounded-[8px] cursor-pointer hover:bg-gray-100' onClick={() => setFilter(AllData)}>All</div>
+        <div className='font px-5 py-1 rounded-[8px] cursor-pointer hover:bg-gray-100'  onClick={() => setFilter(HealthData)}>Health</div>
+        <div className='font px-5 py-1 rounded-[8px] cursor-pointer hover:bg-gray-100'  onClick={() => setFilter(EducationData)}>Education</div>
+        <div className='font px-5 py-1 rounded-[8px] cursor-pointer hover:bg-gray-100' onClick={() => setFilter(AnimalData)}>Animal</div>
       </div>
 
       {/* Cards Container */}
 
-      <div className='flex justify-between flex-wrap w-[80%] mt-[25px]'>
-
+      <div className='grid sm:grid-cols-2 grid-colitems-center w-[90%] mt-[25px]'>
       {/* Card */}
       {filter.map((e) => {
         return (
-          <div key={e.title} className='w-[30%] mt-[20px] hover:translate-y-[-10px] transform-0.5' >
-          <div className='relative h-[120px] w-[100%]'>
+          
+          <div key={e.title} className='p-2 rounded-[15px] bg-gray-400 m-4 mt-[20px]' >
+          <div className='relative h-[200px] w-[50%] m-2'>
             <Image 
               alt="donateBlock dapp"
               layout='fill' 
@@ -48,29 +49,30 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
             />
           </div>
 
-          <div className='font2 mx-[2px] my-0 p-[5px] cursor-pointer'>
+          <div className='font2 mx-[2px] my-0 p-[5px]'>
             {e.title}
           </div>
 
-          <div className='flex justify-between mx-[2px] my-0 p-[5px] cursor-pointer'>
+          <div className='flex justify-between mx-[2px] my-0 p-[5px]'>
 
             <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>Owner<AccountBoxIcon /></div> 
             <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{e.owner.slice(0,6)}...{e.owner.slice(39)}</div>
           </div>
-          <div className='flex justify-between mx-[2px] my-0 p-[5px] cursor-pointer'>
+          <div className='flex justify-between mx-[2px] my-0 p-[5px] '>
             <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>Amount<PaidIcon /></div> 
             <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{e.amount} Matic</div>
           </div>
-          <div className='flex justify-between mx-[2px] my-0 p-[5px] cursor-pointer'>
+          <div className='flex justify-between mx-[2px] my-0 p-[5px]'>
             <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'><EventIcon /></div>
             <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{new Date(e.timeStamp * 1000).toLocaleString()}</div>
           </div>
-          <Link passHref href={'/' + e.address}>
-            <div className='button'>
+          <Link className='flex justify-center' passHref href={'/' + e.address}>
+            <div className='my-5 font-bold hover:scale-105 bg-[#fff] py-3 px-5 text-center w-[200px] rounded-[10px]'>
             Go to DonationEvent
           </div>
           </Link>
         </div>
+        
         )
       })}
         {/* Card */}
