@@ -1,31 +1,16 @@
 import React from 'react'
-import { createContext, useState, useContext} from 'react';
+import { createContext, useState} from 'react';
 import {TailSpin} from 'react-loader-spinner';
 import {ethers} from 'ethers';
 import {toast} from 'react-toastify';
 import DonationTracking from '../artifacts/contracts/DonationTracking.sol/DonationTracking.json'
-import {create as IPFSHTTPClient} from 'ipfs-http-client';
 
 import FormLeftWrapper from './formLeftWrapper';
 import FormRightWrapper from './formRightWrapper';
 
 const FormState = createContext();
 
-const projectId = process.env.NEXT_PUBLIC_IPFS_ID
-const projectSecret = process.env.NEXT_PUBLIC_IPFS_KEY
-const auth = 'Basic ' + Buffer.from(projectId + ":" + projectSecret).toString('base64')
-
-const client = IPFSHTTPClient({
-  host:'ipfs.infura.io',
-  port:5001,
-  protocol: 'https',
-  headers: {
-    authorization: auth
-  }
-})
-
 const Form = () => {
-
 
   const [form, setForm] = useState({
     donationEventTitle: "",
@@ -40,8 +25,6 @@ const [uploaded, setUploaded] = useState(false);
 
 const [storyUrl, setStoryUrl] = useState();
 const [imageUrl, setImageUrl] = useState();
-
-const Handler = useContext(FormState);
 
 const FormHandler = (e) => {
     setForm({
@@ -93,38 +76,6 @@ const startDonationEvent = async (e) => {
 
       setAddress(donationEventData.to);
     }
-}
-
-const [uploadLoading, setUploadLoading] = useState(false);
- // const [uploaded, setUploaded] = useState(false);
-
-  const uploadFiles = async (e) => {
-    e.preventDefault();
-    setUploadLoading(true);
-
-    if(Handler.form.story !== "") {
-      try {
-        const added = await client.add(Handler.form.story);
-        Handler.setStoryUrl(added.path)
-      } catch (error) {
-        toast.warn(`Error Uploading Story`);
-      }
-    }
-
-
-      if(Handler.image !== null) {
-          try {
-              const added = await client.add(Handler.image);
-              Handler.setImageUrl(added.path)
-          } catch (error) {
-            toast.warn(`Error Uploading Image`);
-          }
-      }
-
-      setUploadLoading(false);
-      setUploaded(true);
-      Handler.setUploaded(true);
-      toast.success("Files Uploaded Sucessfully")
 }
 
 return (
