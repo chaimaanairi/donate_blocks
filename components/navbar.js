@@ -18,7 +18,7 @@ const navigation = [
   { name: "All donationEvents", href: "/allDonationEvent", current: false },
   { name: "Create a doantionEvent", href: "/createDonationEvent", current: false },
 ];
-
+ 
 function classNames() {
     var classes = [];
     for (var _i = 0; _i < arguments.length; _i++) {
