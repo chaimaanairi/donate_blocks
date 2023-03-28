@@ -3,10 +3,6 @@ import React from 'react'
 import { ethers } from "ethers";
 import { useState } from "react";
 
-import { Menu } from "@headlessui/react";
-import Link from "next/link";
-import { FunctionComponent } from "react";
-
 import { useWeb3React } from "@web3-react/core"
 import { useEffect } from "react"
 import { injected } from "./connectors"
@@ -52,20 +48,6 @@ const Wallet = () => {
       setBalance(Balance);
     
   };
-
-  useEffect(() => {
-    const connectWalletOnPageLoad = async () => {
-      if (localStorage?.getItem('isWalletConnected') === 'true') {
-        try {
-          await activate(injected)
-          localStorage.setItem('isWalletConnected', true)
-        } catch (ex) {
-          console.log(ex)
-        }
-      }
-    }
-    connectWalletOnPageLoad()
-  }, [])
 
   return (
     <>
