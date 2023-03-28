@@ -35,7 +35,7 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
 
       {/* Cards Container */}
 
-      <div className='grid sm:grid-cols-2 grid-colitems-center w-[90%] mt-[25px]'>
+      <div className='grid lg:grid-cols-2 grid-col items-center w-[75%] mt-[25px]'>
       {/* Card */}
       {filter.map((e) => {
         return (
@@ -43,26 +43,27 @@ export default function AllDonationEvents({AllData, HealthData, EducationData,An
           <div key={e.title} className='p-2 rounded-[15px] bg-gray-400 m-4 mt-[20px]' >
           
           <div className='flex flex-row items-center justify-center'>
-            <div className='relative h-[200px] w-[50%] m-2'>
+            <div className='relative h-[150px] w-[45%] m-2'>
             <Image 
+            className='rounded-[8px]'
               alt="donateBlock dapp"
               layout='fill' 
               src={"https://donateblock.infura-ipfs.io/ipfs/" + e.image} 
             />
           </div>
 
-        <div className='flex flex-col items-center justify-center'>
-        <div className='flex flex-row justify-center mx-[2px] p-[5px]'>
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold mr-3'><AccountBoxIcon className='mx-1' />Owner: </div> 
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{e.owner.slice(0,8)}...{e.owner.slice(39)}</div>
+        <div className='flex flex-col items-start'>
+          <div className='flex flex-row justify-center mx-[2px] p-[5px]'>
+            <div className=' flex items-center font-bold mr-2'><AccountBoxIcon className='mx-1' />Owner: </div> 
+            <div className='flex items-center font-semibold'>{e.owner.slice(0,10)}...{e.owner.slice(39)}</div>
           </div>
-          <div className='flex justify-between mx-[2px] my-0 p-[5px] '>
-            <div className='font2 flex items-center m-0 p-0 font-bold'><PaidIcon className='mx-3' />Amount</div> 
-            <div className='font2 flex items-center m-0 p-0 font-bold'>{e.amount} Matic</div>
+          <div className='flex flex-row justify-center mx-[2px] p-[5px]'>
+            <div className='flex items-center font-bold mr-2'><PaidIcon className='mx-1' />Amount: </div> 
+            <div className='flex items-center font-semibold'>{e.amount} Matic</div>
           </div>
-          <div className='flex justify-between mx-[2px] my-0 p-[5px]'>
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'><EventIcon className='mx-3'/></div>
-            <div className='font2 flex items-center m-0 p-0 font-roboto font-bold'>{new Date(e.timeStamp * 1000).toLocaleString()}</div>
+          <div className='flex flex-row justify-center mx-[2px] p-[5px]'>
+            <div className='flex items-center font-bold mr-2'><EventIcon className='mx-1'/>Date: </div>
+            <div className='flex items-center  font-semibold'>{new Date(e.timeStamp * 1000).toLocaleString()}</div>
           </div>
       </div>
 

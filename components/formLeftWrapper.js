@@ -6,21 +6,18 @@ const FormLeftWrapper = () => {
   const Handler = useContext(FormState);
 
   return (
-    <>
-     {/* FormLeftWrapper */}
-        <div className='w-[48%]'>
-            <div className='font flex flex-col mt-[10px]'>
-                <label>DonationEvent Title</label>
-                <input className='p-[15px] mt-[4px] border-none rounded-[8px] outline-0 w-[100%]' onChange={Handler.FormHandler} value={Handler.form.donationEventTitle} placeholder='DonationEvent Title' name='donationEventTitle'>
-                </input>
-            </div>
-            <div className='font flex flex-col mt-[10px]'>
-                <label>Story</label>
-                <textarea className='p-[15px] mt-[4px] border-none rounded-[8px] outline-0	 max-w-[100%] min-w-[100%] overflow-hidden min-h-[160px]' onChange={Handler.FormHandler} value={Handler.form.story} name="story" placeholder='Describe Your Story'>
-                </textarea>
-            </div>
-        </div>
-    </>
+    <FormLeft>
+      <FormInput>
+        <label>Campaign Title</label>
+        <Input onChange={Handler.FormHandler} value={Handler.form.campaignTitle} placeholder='Campaign Title' name='campaignTitle'>
+        </Input>
+      </FormInput>
+      <FormInput>
+        <label>Story</label>
+        <TextArea onChange={Handler.FormHandler} value={Handler.form.story} name="story" placeholder='Describe Your Story'>
+        </TextArea>
+      </FormInput>
+    </FormLeft>
   )
 }
 

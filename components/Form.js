@@ -78,6 +78,7 @@ const startDonationEvent = async (e) => {
     }
 }
 
+
 return (
   <FormState.Provider value={{form, setForm, image, setImage, ImageHandler, FormHandler, setImageUrl, setStoryUrl, startDonationEvent, setUploaded}} >
 

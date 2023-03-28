@@ -49,121 +49,65 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <HomeWrapper>
+    <div className="flex flex-col items-center">
+      {/* Title + Intro */}
+      <div className='mt-20 flex flex-col items-center w-[75%]'>
+        <h2 className='text-3xl font-bold'>My Donation Events</h2>
+        <p className='mt-5 text-lg font-semibold'>Here you can see all the donation events you have created.</p>
+      </div>
 
       {/* Cards Container */}
-      <CardsWrapper>
+      <div className='grid lg:grid-cols-3 grid-col items-center w-[75%] mt-[25px]'>
 
-      {/* Card */}
       {donationEventsData.map((e) => {
         return (
-          <Card key={e.title}>
-          <CardImg>
+          
+          <div key={e.title} className='p-2 rounded-[15px] bg-gray-400 m-4 mt-[20px]' >
+          
+          <div className='flex flex-row items-center justify-center'>
+            <div className='relative h-[150px] w-[45%] m-2'>
             <Image 
+            className='rounded-[8px]'
               alt="donateBlock dapp"
               layout='fill' 
               src={"https://donateblock.infura-ipfs.io/ipfs/" + e.image} 
             />
-          </CardImg>
-          <Title>
+          </div>
+
+        <div className='flex flex-col items-start'>
+          <div className='flex flex-row justify-center mx-[2px] p-[5px]'>
+            <div className=' flex items-center font-bold mr-2'><AccountBoxIcon className='mx-1' />Owner: </div> 
+            <div className='flex items-center font-semibold'>{e.owner.slice(0,10)}...{e.owner.slice(39)}</div>
+          </div>
+          <div className='flex flex-row justify-center mx-[2px] p-[5px]'>
+            <div className='flex items-center font-bold mr-2'><PaidIcon className='mx-1' />Amount: </div> 
+            <div className='flex items-center font-semibold'>{e.amount} Matic</div>
+          </div>
+          <div className='flex flex-row justify-center mx-[2px] p-[5px]'>
+            <div className='flex items-center font-bold mr-2'><EventIcon className='mx-1'/>Date: </div>
+            <div className='flex items-center  font-semibold'>{new Date(e.timeStamp * 1000).toLocaleString()}</div>
+          </div>
+      </div>
+
+          </div>
+
+          <div className='flex justify-center font-bold text-2xl my-0 p-[5px]'>
             {e.title}
-          </Title>
-          <CardData>
-            <Text>Owner<AccountBoxIcon /></Text> 
-            <Text>{e.owner.slice(0,6)}...{e.owner.slice(39)}</Text>
-          </CardData>
-          <CardData>
-            <Text>Amount<PaidIcon /></Text> 
-            <Text>{e.amount} Matic</Text>
-          </CardData>
-          <CardData>
-            <Text><EventIcon /></Text>
-            <Text>{new Date(e.timeStamp * 1000).toLocaleString()}</Text>
-          </CardData>
-          <Link passHref href={'/' + e.address}><Button>
+          </div>
+
+          
+          <Link className='flex justify-center' passHref href={'/' + e.address}>
+            <div className='mt-5 font-bold hover:scale-105 bg-[#fff] py-3 px-5 text-center w-[200px] rounded-[10px]'>
             Go to DonationEvent
-          </Button></Link>
-        </Card>
+          </div>
+          </Link>
+        </div>
+        
         )
       })}
         {/* Card */}
-
-      </CardsWrapper>
-    </HomeWrapper>
+      </div>
+    </div>
   )
 }
 
-
-
-const HomeWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`
-const CardsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 80%;
-  margin-top: 25px;
-`
-const Card = styled.div`
-  width: 30%;
-  margin-top: 20px;
-  background-color: ${(props) => props.theme.bgDiv};
-  &:hover{
-    transform: translateY(-10px);
-    transition: transform 0.5s;
-  }
-  
-  &:not(:hover){
-    transition: transform 0.5s;
-  }
-`
-const CardImg = styled.div`
-  position: relative;
-  height: 120px;
-  width: 100%;
-`
-const Title = styled.h2`
-  font-family: 'Roboto';
-  font-size: 18px;
-  margin: 2px 0px;
-  background-color: ${(props) => props.theme.bgSubDiv};
-  padding: 5px;
-  cursor: pointer;
-  font-weight: normal;
-`
-const CardData = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 2px 0px;
-  background-color: ${(props) => props.theme.bgSubDiv};
-  padding: 5px;
-  cursor: pointer;
-  `
-const Text = styled.p`
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto';
-  font-size: 18px;
-  font-weight: bold;
-`
-const Button = styled.button`
-  padding: 8px;
-  text-align: center;
-  width: 100%;
-  background-color:#00b712 ;
-  background-image:
-      linear-gradient(180deg, #00b712 0%, #5aff15 80%); 
-  border: none;
-  cursor: pointer;
-  font-family: 'Roboto';
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 14px;
-  font-weight: bold;
-`

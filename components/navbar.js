@@ -13,6 +13,7 @@ const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "All donationEvents", href: "/allDonationEvent", current: false },
   { name: "Create a doantionEvent", href: "/createDonationEvent", current: false },
+  {name :"dashboard", href:"/dashboard", current:false},
 ];
  
 function classNames() {
