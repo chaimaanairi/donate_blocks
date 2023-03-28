@@ -34,25 +34,25 @@ Get started !
       You can donate on DonateBlocks in four easy steps:
       </h2>
       <div className="flex sm:flex-row flex-col sm:space-x-20 space-y-3 mb-5 mt-10 ">
-        <div className="flex flex-col items-center justify-center border-[2px] h-[250px] w-[200px] p-3 bg-white rounded-[10px]">
+        <div className="flex flex-col items-center justify-center border-[2px] h-[250px] w-[200px] p-3 bg-white rounded-[10px] hover:scale-105 hover:bg-gray-200">
           <h2 className="font-bold md:text-4xl text-3xl text-gray-800">STEP 1</h2>
           <p className=" text-sm font-semibold text-[#000] mt-5">
           Install the MetaMask extension on your browser and connect it to your <span className='font-bold'>DonateBlocks</span> account.
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center border-[2px] h-[250px] w-[200px] p-3 bg-white rounded-[10px]">
+        <div className="flex flex-col items-center justify-center border-[2px] h-[250px] w-[200px] p-3 bg-white rounded-[10px] hover:scale-105 hover:bg-gray-200">
           <h2 className="font-bold md:text-4xl text-3xl text-gray-800">STEP 2</h2>
           <p className=" text-sm font-semibold text-[#000] mt-5">
           Explore the campaign page to discover ongoing campaigns that you would like to contribute to.
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center border-[2px] h-[250px] w-[200px] p-3 bg-white rounded-[10px]">
+        <div className="flex flex-col items-center justify-center border-[2px] h-[250px] w-[200px] p-3 bg-white rounded-[10px] hover:scale-105 hover:bg-gray-200">
           <h2 className="font-bold md:text-4xl text-3xl text-gray-800">STEP 3</h2>
           <p className=" text-sm font-semibold text-[#000] mt-5">
           Read the details of each campaign and choose the one that resonates with you the most.
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center border-[2px] h-[250px] w-[200px] p-3 bg-white rounded-[10px]">
+        <div className="flex flex-col items-center justify-center border-[2px] h-[250px] w-[200px] p-3 bg-white rounded-[10px] hover:scale-105 hover:bg-gray-200">
           <h2 className="font-bold md:text-4xl text-3xl text-gray-800">STEP 4</h2>
           <p className=" text-sm font-semibold text-[#000] mt-5">
           Make your donation through MetaMask and contribute to a brighter future for those in need.          </p>
