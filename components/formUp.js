@@ -7,47 +7,18 @@ const FormUp = () => {
 
   return (
     <div className=''>
-      <div>
-        <label>Campaign Title</label>
-        <Input onChange={Handler.FormHandler} value={Handler.form.campaignTitle} placeholder='Campaign Title' name='campaignTitle'>
-        </Input>
+      <div className='mb-5'>
+        <label className='font-bold mb-2'>DonationEvent Title</label>
+        <input className='p-[15px] mt-[4px] border-[1px] w-[100%] rounded-[8px] border-black' onChange={Handler.FormHandler} value={Handler.form.campaignTitle} placeholder='Campaign Title' name='campaignTitle'>
+        </input>
       </div>
-      <div>
-        <label>Story</label>
-        <TextArea className='' onChange={Handler.FormHandler} value={Handler.form.story} name="story" placeholder='Describe Your Story'>
-        </TextArea>
+      <div className='mb-5'>
+        <label className='font-bold mb-2'>DonationEvent Description</label>
+        <textarea className='p-[15px] mt-[4px] border-[1px] max-w-[100%] min-w-[100%] min-h-[160px] rounded-[8px] border-black'  onChange={Handler.FormHandler} value={Handler.form.story} name="story" placeholder='Describe Your Story'>
+        </textarea>
       </div>
     </div>
   )
 }
-
-const Input = styled.input`
-  padding:15px;
-  background-color:${(props) => props.theme.bgDiv} ;
-  color:${(props) => props.theme.color} ;
-  margin-top:4px;
-  border:none ;
-  border-radius:8px ;
-  outline:none;
-  font-size:large;
-  width:100% ;
-  border:1px solid ;
-`
-
-const TextArea = styled.textarea`
-  padding:15px;
-  background-color:${(props) => props.theme.bgDiv} ;
-  color:${(props) => props.theme.color} ;
-  margin-top:4px;
-  border:none;
-  border-radius:8px ;
-  outline:none;
-  font-size:large;
-  max-width:100%;
-  min-width:100%;
-  overflow-x:hidden;
-  min-height:160px ;
-  border:1px solid ;
-`
 
 export default FormUp;

@@ -111,8 +111,7 @@ return (
                 </div>
             </div>
             :
-                <div className='flex flex-col mt-[30px]'>
-                    <div className='flex flex-col'> </div>
+                <div className='flex flex-col'>
                     <FormUp />
                     <FormDown />
                 </div>    
