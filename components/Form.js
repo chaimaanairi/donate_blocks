@@ -86,7 +86,11 @@ return (
     <div className='my-20 w-[80%]'>
         <div className='flex flex-col'>
           <h2 className='text-[30px] font-bold'>Start a DonationEvent</h2>
-          <p className='text-[16px] mt-[10px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nisl vitae lacinia lacinia, nisl nisl aliquet nisl, nec aliquet nisl nisl sit amet nisl. </p>
+          <p className='text-[16px] mt-[10px]'>
+          On the <span className='font-bold'>DonateBlocks</span> platform, you can start a DonationEvent and make a positive impact in the world. Before creating a DonationEvent, please make sure that you have all the necessary details and information. 
+          Once you create a DonationEvent, it will be stored on the blockchain, which means that it cannot be changed or modified. Therefore, it is important to ensure that all information is accurate and complete before creating a DonationEvent. 
+          Lets make a difference together with <span className='font-bold'>DonateBlocks</span>!
+          </p>
       </div>
       </div>
   </div>
@@ -107,12 +111,10 @@ return (
                 </div>
             </div>
             :
-                <div className='flex justify-between mt-[45px]'>
-                   
+                <div className='flex flex-col mt-[30px]'>
+                    <div className='flex flex-col'> </div>
                     <FormLeftWrapper />
-                    
-                      <FormRightWrapper />
-
+                    <FormRightWrapper />
                 </div>    
 
         }
