@@ -3,11 +3,8 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { useRouter } from "next/router"
 import Logo from "../public/images/logo.png";
 import Image from 'next/image'
-
-//import {useAccount, useNetwork} from "../../hooks/useHooks";
 
 import ActiveLink from "./link"
 import Wallet from './wallet';
@@ -29,7 +26,6 @@ function classNames() {
 
 
 export default function Navbar() {
- 
 
   return (
     <section className='mb-20'>
@@ -123,7 +119,7 @@ export default function Navbar() {
         </>
       )}
     </Disclosure>
-   
+ 
       </section>
   )
 }
