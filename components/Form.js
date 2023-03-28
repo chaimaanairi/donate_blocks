@@ -80,6 +80,16 @@ const startDonationEvent = async (e) => {
 
 
 return (
+  <>
+  {/** title + intro  */}
+  <div className='flex justify-center w-[100%]'>
+    <div className='my-20 w-[80%]'>
+        <div className='flex flex-col'>
+          <h2 className='text-[30px] font-bold'>Start a DonationEvent</h2>
+          <p className='text-[16px] mt-[10px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nisl vitae lacinia lacinia, nisl nisl aliquet nisl, nec aliquet nisl nisl sit amet nisl. </p>
+      </div>
+      </div>
+  </div>
   <FormState.Provider value={{form, setForm, image, setImage, ImageHandler, FormHandler, setImageUrl, setStoryUrl, startDonationEvent, setUploaded}} >
 
 <div className='flex justify-center w-[100%]'>
@@ -109,6 +119,7 @@ return (
     </div>
 </div>
 </FormState.Provider>
+</>
 )
 }
 
