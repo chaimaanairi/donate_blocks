@@ -9,6 +9,11 @@ import DonationEvent from '../artifacts/contracts/DonationTracking.sol/DonationE
 import { useEffect, useState } from "react";
 import {Facebook} from "../public/images/facebook.png"
 
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+
 export default function Detail({Data, DonationsData}) {
   const [mydonations, setMydonations] = useState([]);
   const [story, setStory] = useState();
@@ -110,7 +115,7 @@ export default function Detail({Data, DonationsData}) {
         </div>
       </div>
       <div className=" flex lg:flex-row flex-col lg:items-start items-center">
-        <div className="flex flex-col m-5 lg:w-[50%] w-[100%]">
+        <div className="flex flex-col mx-5 lg:w-[50%] w-[100%]">
           <h2 className="text-2xl font-bold">All Donations</h2>
           <div className="h-[280px] mt-[15px]">
           <div className="h-[65%] p-5 overflow-y-auto bg-slate-300 rounded-[8px]">
@@ -141,40 +146,36 @@ export default function Detail({Data, DonationsData}) {
           </div>
         </div>  
       </div>
-      <div className="flex flex-col m-10">
-      <div className="flex flex-row  items-center mt-[10px] w-[100%]">
-          <input className="mx-10 px-[8px] py-[15px] border-[1px] border-black w-[40%] h-[40px]" value={amount} onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount To Donate" />
-          <button className="flex justify-center font-bold w-[30%] p-[10px] bg-gray-300 cursor-pointer rounded-2xl" onClick={DonateFunds}>
+      <div className="flex flex-col my-[40px] mx-[50px]">
+      <div className="bg-[#6AA4B0] py-4 rounded-[10px] flex flex-row mt-20 items-center lg:mt-[10px] w-[100%]">
+          <input className="rounded-full mx-10 px-[8px] py-[15px] border-[1px] border-black w-[50%] h-[40px]" value={amount} onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount To Donate" />
+          <button className="ml-2 inline-flex items-center px-4 py-1.5 border text-[15px] font-bold rounded-full shadow-sm text-black bg-white cursor-pointer hover:scale-105" onClick={DonateFunds}>
             Donate 
           </button>
       </div>
       {/**share in social media */}
-      <div className="mt-[50px] bg-gray-200">
-          <h2 className="text-xl font-bold flex justify-center">Share the donationEvent in Social Media</h2>
-          <div className="flex flex-row">
-            <div className="flex flex-row m-10">
-            <div className="flex flex-col">
-              <h2>Share in Twitter</h2>
+      <div className="mt-[50px] bg-gray-200 p-5 rounded-[8px]">
+          <h2 className="text-xl font-bold flex justify-center">Share the donation event on social media</h2>
+          <div className="flex flex-row  justify-center">
+            <div className="flex flex-row mt-[20px]">
+            <div className="flex flex-col mx-6">
               <a href={`https://twitter.com/intent/tweet?text=Donate to ${Data.title} at ${Data.address}&url=https://donateblock.vercel.app/donationevent/${Data.address}`} target="_blank">
-              <img src="./twitter"/>
+              <TwitterIcon size={32} round={true} />
               </a>
             </div>
-            <div className="flex flex-col">
-              <h2>Share in Facebook</h2>
+            <div className="flex flex-col mx-6">
               <a href={`https://www.facebook.com/sharer/sharer.php?u=https://donateblock.vercel.app/donationevent/${Data.address}`} target="_blank">
-              <Image alt="fb" src={Facebook} width={20} height={20}  />
+              <FacebookIcon size={32} round={true} />
               </a>
               </div>
-              <div className="flex flex-col">
-              <h2>Share in Instagram</h2>
+              <div className="flex flex-col mx-6">
               <a href={`https://www.instagram.com/sharer/sharer.php?u=https://donateblock.vercel.app/donationevent/${Data.address}`} target="_blank">
-              <img src="./instagram"/> 
+              <InstagramIcon size={32} round={true}/> 
               </a>
               </div>
-              <div className="flex flex-col">
-              <h2>Share in Whatsapp</h2>
+              <div className="flex flex-col mx-6">
               <a href={`https://api.whatsapp.com/send?text=Donate to ${Data.title} at ${Data.address} https://donateblock.vercel.app/donationevent/${Data.address}`} target="_blank">
-              <img src="./Whatsapp"/> 
+              <WhatsAppIcon size={32} round={true} /> 
               </a>
               </div>
             </div>
