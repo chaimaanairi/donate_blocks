@@ -99,12 +99,12 @@ export default function Detail({Data, DonationsData}) {
       </div>
       <div className="flex flex-col m-10">
           <div className="bg-gray-200 mb-10">
-            <FundText>Required Amount</FundText>
-            <FundText>{Data.requiredAmount} Matic</FundText>
+            <p className="m-[2px] p-0 font-normal">Required Amount</p>
+            <p className="m-[2px] p-0 font-normal">{Data.requiredAmount} Matic</p>
           </div>
           <div className="bg-gray-200">
-            <FundText>Received Amount</FundText>
-            <FundText>{Data.receivedAmount} Matic</FundText>
+            <p className="m-[2px] p-0 font-normal">Received Amount</p>
+            <p className="m-[2px] p-0 font-normal">{Data.receivedAmount} Matic</p>
           </div>
           
         </div>
@@ -112,8 +112,8 @@ export default function Detail({Data, DonationsData}) {
       <div className="mb-20  flex lg:flex-row flex-col  lg:items-start items-center">
         <div className="flex flex-col m-10 lg:w-[50%] w-[100%]">
           <h2 className="text-2xl font-bold">All Donations</h2>
-          <Donated>
-          <LiveDonation>
+          <div className="h-[280px] mt-[15px]">
+          <div className="h-[65%] overflow-y-auto">
             <div className="uppercase  p-[4px] text-center bg-[4cd137]">Recent Donation</div>
             {DonationsData.map((e) => {
               return (
@@ -125,7 +125,7 @@ export default function Detail({Data, DonationsData}) {
               )
             })
             }
-          </LiveDonation>
+          </div>
           <div className="h-[35%] overflow-y-auto">
             <div className="uppercase  p-[4px] text-center bg-[4cd137]">My Past Donation</div>
             {mydonations.map((e) => {
@@ -139,7 +139,7 @@ export default function Detail({Data, DonationsData}) {
             })
             }
           </div>
-        </Donated>  
+        </div>  
       </div>
       <div className="flex flex-col m-10">
       <div className="flex justify-between items-center mt-[10px] w-[100%]">
@@ -261,21 +261,3 @@ export async function getStaticProps(context) {
 
 
 }
-
-const FundText = styled.p`
-  margin: 2px;
-  padding: 0;
-  font-family: "Poppins";
-  font-size: normal;
-`;
-const Donated = styled.div`
-  height: 280px;
-  margin-top: 15px;
-  background-color: ${(props) => props.theme.bgDiv};
-`;
-const LiveDonation = styled.div`
-  height: 65%;
-  overflow-y: auto;
-`;
-
-
