@@ -10,8 +10,9 @@ const deneme = () => {
         <p>Deneme</p>
 
         <p>Deneme</p>
-        
 
+        <p>Deneme</p>
+        
     </div>
   )
 }
