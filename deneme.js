@@ -6,6 +6,10 @@ const deneme = () => {
       deneme
       +
       deneme
+      +
+      deneme
+      +
+      deneme
     </div>
   )
 }
