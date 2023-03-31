@@ -5,13 +5,6 @@ const deneme = () => {
     <div>
         <h1>Deneme</h1>
 
-        <p>Deneme</p>
-
-        <p>Deneme</p>
-
-        <p>Deneme</p>
-
-        <p>Deneme</p>
         
     </div>
   )
