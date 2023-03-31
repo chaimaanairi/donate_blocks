@@ -4,6 +4,8 @@ const deneme = () => {
   return (
     <div>
       deneme
+      +
+      deneme
     </div>
   )
 }
