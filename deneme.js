@@ -1,3 +1,11 @@
-import react
+import React from 'react'
 
-from "@heroicons/react";
+const deneme = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default deneme
