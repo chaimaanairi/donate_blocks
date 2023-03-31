@@ -3,13 +3,8 @@ import React from 'react'
 const deneme = () => {
   return (
     <div>
-      deneme
-      +
-      deneme
-      +
-      deneme
-      +
-      deneme
+        <h1>Deneme</h1>
+        
     </div>
   )
 }
