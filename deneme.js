@@ -7,9 +7,7 @@ const deneme = () => {
 
         <h1>Deneme</h1>
 
-        <h1>Deneme</h1>
-
-        <h1>Deneme</h1>
+        
     </div>
   )
 }
