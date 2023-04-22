@@ -1,4 +1,4 @@
-# Donate_Block
+# Donate_Blocks
 
 <h3> Graduation Project - Bitirme Projesi </h3>
 
