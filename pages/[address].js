@@ -85,7 +85,7 @@ export default function Detail({Data, DonationsData}) {
         <h2 className="text-4xl font-bold">DonationEvent Details</h2>
       </div>
       <div className=" flex lg:flex-row flex-col lg:items-start items-center">
-        <div className="relative lg:w-[50%] w-[100%] h-[350px]">
+        <div className="relative lg:w-[3000px] w-[100%] h-[350px]">
           <Image
           className="rounded-[10px]"
             alt="donateblock dapp"

@@ -105,14 +105,16 @@ return (
             <div className='flex flex-col items-center rounded-[8px] w-[100%] h-[80vh]'>
                 <h1>DonationEvent Started Sucessfully!</h1>
                 <h1>{address}</h1>
-                <div className='button2'>
+                <div className='flex justify-center'>
+                  <button className='cursor-pointer w-[100%] mt-[30px] p-2 font-bold rounded-[8px] bg-[#6AA4B0]'>
                     Go To DonationEvent
+                  </button>
                 </div>
             </div>
             :
-                <div className='flex flex-col'>
-                    <FormChart />
-                </div>    
+            <div className='flex flex-col'>
+                <FormChart />
+            </div>    
 
         }
     </div>

@@ -57,7 +57,7 @@ const FormDown = () => {
     <div className='flex flex-col'>
       <div className='mb-5'>
         <label className='font-bold mb-2'>DonationEvent Title</label>
-        <input className='p-[15px] mt-[4px] border-[1px] w-[100%] rounded-[8px] border-black' onChange={Handler.FormHandler} value={Handler.form.campaignTitle} placeholder='Campaign Title' name='campaignTitle'>
+        <input className='p-[15px] mt-[4px] border-[1px] w-[100%] rounded-[8px] border-black' onChange={Handler.FormHandler} value={Handler.form.donationEventTitle} placeholder='donationEvent Title' name='donationEventTitle'>
         </input>
       </div>
       <div className='mb-5'>
@@ -101,7 +101,7 @@ const FormDown = () => {
       </div>
       {/* Start DonationEvent */}
       <div className='flex justify-center'>
-      <button className=' w-[60%] mt-[30px] p-2 font-bold rounded-[8px] bg-[#6AA4B0]' onClick={Handler.startCampaign}>
+      <button className=' w-[60%] mt-[30px] p-2 font-bold rounded-[8px] bg-[#6AA4B0]' onClick={Handler.startDonationEvent}>
         Start DonationEvent
       </button>
       </div>
