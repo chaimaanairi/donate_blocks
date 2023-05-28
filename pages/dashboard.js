@@ -10,7 +10,6 @@ import DonationTracking from '../artifacts/contracts/DonationTracking.sol/Donati
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-
 export default function Dashboard() {
   const [donationEventsData, setDonationEventsData] = useState([]);
 
