@@ -1,7 +1,7 @@
 {
   "name": "create-next-app-default",
   "version": "0.1.0",
-  "description": "",
+  "description": "", 
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
