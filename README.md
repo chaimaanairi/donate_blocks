@@ -1,6 +1,6 @@
 # Donate_Blocks
 
-The DonateBlocks donation tracking system is a comprehensive platform designed to facilitate and manage charitable donations effectively. </br></br>
+DonateBlocks is a blockchain-based donation tracking system designed and implemented to ensure secure and transparent tracking of charitable donations. </br></br>
 
 ![Capture d’écran ](https://github.com/ChaimaaNairi/Donate_Blocks/assets/83820363/3ff49fbb-5b1d-4e77-9a3d-4defebfec86e)
 
