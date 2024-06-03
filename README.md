@@ -3,4 +3,4 @@
 <h3> Graduation Project - Bitirme Projesi </h3>
 
 Main page
-![image](https://github.com/ChaimaaNairi/Donate_Blocks/assets/83820363/477f7d73-656d-4090-9c82-76f50bb8aec9)
+![Capture d’écran ](https://github.com/ChaimaaNairi/Donate_Blocks/assets/83820363/3ff49fbb-5b1d-4e77-9a3d-4defebfec86e)
