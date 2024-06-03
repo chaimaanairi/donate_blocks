@@ -4,6 +4,7 @@
 
 <h2>Main page</h2>
 The DonateBlocks donation tracking system is a comprehensive platform designed to facilitate and manage charitable donations effectively. 
+
 ![Capture d’écran ](https://github.com/ChaimaaNairi/Donate_Blocks/assets/83820363/3ff49fbb-5b1d-4e77-9a3d-4defebfec86e)
 
 <h2> Project Architecture Overview</h2>
