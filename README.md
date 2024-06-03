@@ -1,9 +1,6 @@
 # Donate_Blocks
 
-<h3> Graduation Project - Bitirme Projesi </h3>
-
-<h2>Main page</h2>
-The DonateBlocks donation tracking system is a comprehensive platform designed to facilitate and manage charitable donations effectively. </br>
+The DonateBlocks donation tracking system is a comprehensive platform designed to facilitate and manage charitable donations effectively. </br></br>
 
 ![Capture d’écran ](https://github.com/ChaimaaNairi/Donate_Blocks/assets/83820363/3ff49fbb-5b1d-4e77-9a3d-4defebfec86e)
 
