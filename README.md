@@ -2,7 +2,7 @@
 
 DonateBlocks is a blockchain-based donation tracking system designed and implemented to ensure secure and transparent tracking of charitable donations. </br></br>
 
-![Capture d’écran ](https://github.com/ChaimaaNairi/Donate_Blocks/assets/83820363/3ff49fbb-5b1d-4e77-9a3d-4defebfec86e)
+![Capture d’écran ](https://github.com/ChaimaaNairi/Donate_Blocks/assets/83820363/aa760da6-6571-45ca-8ee8-bac72e5c82c6)
 
 <h2> Project Architecture Overview</h2>
 <h3> 1. Front-End Development</h3>
@@ -24,3 +24,9 @@ DonateBlocks is a blockchain-based donation tracking system designed and impleme
 
 <h2>System Architecture</h2>
 The DonateBlocks platform architecture comprises smart contracts deployed on the Ethereum blockchain. DonationEvent contracts are created by donors to govern donation processes, while DonationTracking contracts provide a public record of donations received by recipient organizations. Users interact with these contracts through a user interface, enabling seamless donation processes and transparent tracking of donations.</br>
+
+
+###Create a 'donationEvent'
+
+![Capture d’écran ](https://github.com/ChaimaaNairi/Donate_Blocks/assets/83820363/4d625a4b-f023-43da-9fc7-39227da5e13e)
+
